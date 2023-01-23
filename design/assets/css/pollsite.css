@@ -17,7 +17,14 @@
   --font_inter:'inter';
 }
 
-
+.float{
+  height: 40px;
+  position: fixed;
+  width: 100%;
+  background: blue;
+  z-index: 2;
+  bottom: 0;
+}
 .logoname {
   font-family: var(--font_inter);
   font-size: var(--h4_22px);

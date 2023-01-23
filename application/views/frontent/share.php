@@ -110,74 +110,7 @@
     .d-toggle{
         display : none;
     }
-    .dot-pulse {
-        position: relative;
-        left: -9999px;
-        width: 10px;
-        height: 10px;
-        display: inline-block;  
-        border-radius: 5px;
-        background-color: #04ae42;
-        color: #04ae42;
-        box-shadow: 9999px 0 0 -5px;
-        animation: dot-pulse 1.5s infinite linear;
-        animation-delay: 0.25s;
-    }
-    .dot-pulse::before, .dot-pulse::after {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        top: 0;
-        width: 10px;
-        height: 10px;
-        border-radius: 5px;
-        background-color: #04ae42;
-        color: #04ae42;
-    }
-    .dot-pulse::before {
-        box-shadow: 9984px 0 0 -5px;
-        animation: dot-pulse-before 1.5s infinite linear;
-        animation-delay: 0s;
-    }
-    .dot-pulse::after {
-        box-shadow: 10014px 0 0 -5px;
-        animation: dot-pulse-after 1.5s infinite linear;
-        animation-delay: 0.5s;
-    }
-
-    @keyframes dot-pulse-before {
-        0% {
-            box-shadow: 9984px 0 0 -5px;
-        }
-        30% {
-            box-shadow: 9984px 0 0 2px;
-        }
-        60%, 100% {
-            box-shadow: 9984px 0 0 -5px;
-        }
-        }
-        @keyframes dot-pulse {
-        0% {
-            box-shadow: 9999px 0 0 -5px;
-        }
-        30% {
-            box-shadow: 9999px 0 0 2px;
-        }
-        60%, 100% {
-            box-shadow: 9999px 0 0 -5px;
-        }
-        }
-        @keyframes dot-pulse-after {
-        0% {
-            box-shadow: 10014px 0 0 -5px;
-        }
-        30% {
-            box-shadow: 10014px 0 0 2px;
-        }
-        60%, 100% {
-            box-shadow: 10014px 0 0 -5px;
-        }
-    }
+    
     @media only screen and (max-width: 600px) {
         .mid-first-share{
             width: 90%;
@@ -193,7 +126,7 @@ foreach($poll->option as $options)
 }
 $msg = preg_replace('/{title}/i', $poll->title, $poll_data['share_msg']);
 $msg = preg_replace('/{link}/i', base_url('poll/'.$poll_data['share_id']) , $msg);
-$msg =  utf8_decode($msg);
+// $msg =  $msg;
 // die;
 ?>
     <div class="container py-4">
@@ -270,7 +203,7 @@ $msg =  utf8_decode($msg);
               <div class="carousel-item active">
                 <div class="row">
                 <?php foreach($top_poll as $value){ $result = json_decode($value['poll'])?>
-                    <div class="col-md 4">
+                    <div class="col-md-4">
                     <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
                         <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
@@ -290,14 +223,6 @@ $msg =  utf8_decode($msg);
                 <img class="d-block w-100" src="..." alt="Third slide">
               </div> -->
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
           </div>
     </div>
     <div class="container py-2 mb-5">
@@ -312,7 +237,7 @@ $msg =  utf8_decode($msg);
               <div class="carousel-item active">
                 <div class="row">
                 <?php foreach($recent_poll as $value){ $result = json_decode($value['poll'])?>
-                    <div class="col-md 4">
+                    <div class="col-md-4">
                     <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
                         <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
@@ -332,26 +257,17 @@ $msg =  utf8_decode($msg);
                 <img class="d-block w-100" src="..." alt="Third slide">
               </div> -->
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
           </div>
     </div>
     </div>
 
 <script>
 function my() {
-    
-      alert('copied');
+
       var Text = document.getElementById("foo");
       Text.select();
       navigator.clipboard.writeText(Text.value);
-
+    
   }
 </script>
     <!-- -------------------------------Futtter Div----------------------------------->

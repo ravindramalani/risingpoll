@@ -6,7 +6,6 @@ class Db_create_poll extends CI_Model
 {
     public function db_insert_poll($data){
         $this->db->insert('poll_table', $data);
-        mysqli_set_charset('utf8');
         if($this->db->insert_id()){
             return $this->db->insert_id();
         }else{
@@ -17,8 +16,10 @@ class Db_create_poll extends CI_Model
     public function fetch_poll_all(){
         return $this->db->where('uid',$this->session->userdata('uid'))->get('poll_table')->result_array();  
     }
-    public function fetch_poll($share_id){
-        $this->db->query("UPDATE poll_table SET view = view + 1 WHERE share_id = '$share_id'");
+    public function fetch_poll($share_id,$status){
+        if($status){
+            $this->db->query("UPDATE poll_table SET view = view + 1 WHERE share_id = '$share_id'");
+        }
         return $this->db->where('share_id',$share_id)->get('poll_table')->row_array();  
     }
     public function update_poll($share_id,$op,$data,$ip=null,$name=null){
@@ -73,10 +74,10 @@ class Db_create_poll extends CI_Model
         }
     }
     public function recent_poll(){
-        return $this->db->where('private','')->order_by("id", "desc")->get('poll_table', 3)->result_array();
+        return $this->db->where('private','')->order_by("id", "desc")->get('poll_table', 6)->result_array();
     }
     public function top_poll(){
-        return $this->db->where('private','')->order_by("view", "desc")->get('poll_table', 3)->result_array();
+        return $this->db->where('private','')->order_by("view", "desc")->get('poll_table', 9)->result_array();
     }
     public function profile(){
         return $this->db->where(array('id'=>$this->session->userdata('uid')))->get('users')->row_array();

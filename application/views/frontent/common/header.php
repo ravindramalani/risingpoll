@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+$url = base_url(); 
+$title = 'RisingPoll: Lets Poll';
+if(isset($poll)){
+$title = $poll->title;
+    if(isset($poll->head_img)){
+        $og_img = base_url('assets/image_poll/'.$poll->head_img);
+    }else{
+        $og_img = base_url('assets/image_poll/'.$poll->head_img);
+    }
+}else{
+    $og_img = base_url('assets/').'image_share.png' ;
+}
 
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta property="og:title" content="<?= $title; ?>" />
+    <meta property="og:url" content="<?= $url; ?>" />
+    <meta property="og:image" content="<?= $og_img; ?>" />
     <!-- Css -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/pollsite.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/pollsite.css?v=<?php echo rand(); ?>">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
@@ -20,12 +37,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127456458-54"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'UA-127456458-54');
+    </script>
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title>Create The poll</title>
+    <title><?= $title; ?></title>
     <style>
         .user-image{
             float: left;
@@ -57,7 +82,7 @@
 
     <div class="nav-color">
         <nav class="container navbar navbar-expand-md navbar-dark">
-            <a class="navbar-brand logoname" href="<?= base_url('') ?>">StreakPOLL</a>
+            <a class="navbar-brand logoname" href="<?= base_url('') ?>">RisingPoll</a>
             <?php if(isset($signal)): ?>
                 <button class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon"></span>

@@ -11,6 +11,7 @@
     }
     .mid-first-share{
         width: 50%;
+        border: 1px solid #c0c0c0;
         /* border: 1px solid #343333; */
         /* filter: blur(2px); */
         box-shadow: 0 0 10px 1px rgb(0 0 0 / 14%), 0 1px 14px 2px rgb(0 0 0 / 12%), 0 0 5px -3px rgb(0 0 0 / 30%);
@@ -81,6 +82,10 @@
     label input:checked+span:after {
         opacity: 1;
     }
+    .col-md-4 a{
+        text-decoration : none;
+        color : black;
+    }
     .arrow-right{
         border-top: 25px solid transparent;
         border-bottom: 25px solid transparent;
@@ -120,77 +125,10 @@
     .d-toggle{
         display : none;
     }
-    .dot-pulse {
-        position: relative;
-        left: -9999px;
-        width: 10px;
-        height: 10px;
-        display: inline-block;  
-        border-radius: 5px;
-        background-color: #04ae42;
-        color: #04ae42;
-        box-shadow: 9999px 0 0 -5px;
-        animation: dot-pulse 1.5s infinite linear;
-        animation-delay: 0.25s;
-    }
-    .dot-pulse::before, .dot-pulse::after {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        top: 0;
-        width: 10px;
-        height: 10px;
-        border-radius: 5px;
-        background-color: #04ae42;
-        color: #04ae42;
-    }
-    .dot-pulse::before {
-        box-shadow: 9984px 0 0 -5px;
-        animation: dot-pulse-before 1.5s infinite linear;
-        animation-delay: 0s;
-    }
-    .dot-pulse::after {
-        box-shadow: 10014px 0 0 -5px;
-        animation: dot-pulse-after 1.5s infinite linear;
-        animation-delay: 0.5s;
-    }
-
-    @keyframes dot-pulse-before {
-        0% {
-            box-shadow: 9984px 0 0 -5px;
-        }
-        30% {
-            box-shadow: 9984px 0 0 2px;
-        }
-        60%, 100% {
-            box-shadow: 9984px 0 0 -5px;
-        }
-        }
-        @keyframes dot-pulse {
-        0% {
-            box-shadow: 9999px 0 0 -5px;
-        }
-        30% {
-            box-shadow: 9999px 0 0 2px;
-        }
-        60%, 100% {
-            box-shadow: 9999px 0 0 -5px;
-        }
-        }
-        @keyframes dot-pulse-after {
-        0% {
-            box-shadow: 10014px 0 0 -5px;
-        }
-        30% {
-            box-shadow: 10014px 0 0 2px;
-        }
-        60%, 100% {
-            box-shadow: 10014px 0 0 -5px;
-        }
-    }
+    
     @media only screen and (max-width: 600px) {
         .mid-first-share{
-            width: 90%;
+            width: 100%;
         }
         .arrow{
             width: 50% !important;
@@ -199,19 +137,25 @@
 </style>
 <?php
 $poll = json_decode($poll_data['poll']);
+$share = json_decode($poll_data['custom_button']);
 $count =0;
 foreach($poll->option as $options)
 {
     $count += $options->option_count;
 }
-if($poll_data['end_date'] == date('Y-m-d')){
-    $d_status = true;
+if($poll_data['end_date']){
+    $date = strtotime($poll_data['end_date']);
+    if(date('dmYhis',$date) <= date('dmYhis')){
+        $d_status = true;
+    }else{
+        $d_status = false;
+    }
 }else{
     $d_status = false;
 }
 $msg = preg_replace('/{title}/i', $poll->title, $poll_data['share_msg']);
 $msg = preg_replace('/{link}/i', base_url('poll/'.$poll_data['share_id']) , $msg);
-$msg =  utf8_decode($msg);
+$msg =  $msg;
 ?>
     <div class="container pt-4 pb-1">
         <div class="mid-first-share my-4">
@@ -244,9 +188,9 @@ $msg =  utf8_decode($msg);
                 <?php endif; ?>
                 </div>
                 <div class="vote-button py-2">
-                    <button id="vote" href="" class="btn btn-primary">Vote</button>
+                    <button id="vote" href="" class="btn btn-primary"><?= isset($share->vote_text) ?  $share->vote_text :'Vote' ?></button>
                     <?php if($poll_data['hide_result'] != 'on'):?>
-                    <button type="button" id="result" class="btn btn-primary">Result</button>
+                    <button type="button" id="result" <?=  (!$this->session->userdata('vote'))? 'disabled="disabled"' : '' ?> class="btn btn-primary"><?= isset($share->result_text) ?  $share->result_text :'Result' ?></button>
                     <?php endif; ?>
                 </div>
             </div>
@@ -256,27 +200,42 @@ $msg =  utf8_decode($msg);
                     <div class="options px-4">
                     <div class="append">
                     </div>
-                    <?php if(!$d_status): ?>
+                    <?php if(!$d_status){ ?>
                     <div class="vote-button py-2">
                         <button id="back" type="submit" class="btn btn-primary">Back</button>
                     </div>
-                    <?php else: ?>
+                    <?php }else{ ?>
                         <p class="text-center text-danger">This poll is over. You can see results</p>
-                    <?php endif; ?>
+                    <?php } ?>
+                </div>
                 </div>
                 <?php endif; ?>
-        </div>
-        <div class="share-buttons my-2 px-2 py-3">
-            <a href="whatsapp://send?text=<?= $msg ?>" action="share/whatsapp/share" target="_blank" class="btn w-100 wts btn-primary custom my-2">
-                <i class="fa fa-whatsapp text-white" aria-hidden="true"></i> Whatsapp
-            </a>
-            <a class="btn w-100 insta btn-primary custom my-2">
-                <i class="fa fa-instagram text-white" aria-hidden="true"></i> Instagram
-            </a>
-        </div>
+                <?php if($d_status && $poll_data['hide_result']){ echo  '<p class="text-center text-danger">Results are hidden and poll is over</p>'; } ?>
+                <?php 
+                    if(isset($share)){
+                        if($share->other_share != 'on'){ ?>
+                        <div class="share-buttons my-2 px-2 py-3">
+                            <a href="whatsapp://send?text=<?= $msg ?>" action="share/whatsapp/share" target="_blank" class="btn w-100 wts btn-primary custom my-2">
+                                <i class="fa fa-whatsapp text-white" aria-hidden="true"></i> Whatsapp
+                            </a>
+                            <a class="btn w-100 insta btn-primary custom my-2">
+                                <i class="fa fa-instagram text-white" aria-hidden="true"></i> Instagram
+                            </a>
+                        </div>
+                    <?php  }
+                    }else{ ?>
+                        <div class="share-buttons my-2 px-2 py-3">
+                        <a href="whatsapp://send?text=<?= $msg ?>" action="share/whatsapp/share" target="_blank" class="btn w-100 wts btn-primary custom my-2">
+                            <i class="fa fa-whatsapp text-white" aria-hidden="true"></i> Whatsapp
+                        </a>
+                        <a class="btn w-100 insta btn-primary custom my-2">
+                            <i class="fa fa-instagram text-white" aria-hidden="true"></i> Instagram
+                        </a>
+                    </div>
+                   <?php } ?>
     </div>
-    <div class="container text-center">
-        <a href="<?php echo base_url('manage/create_page'); ?>" class="btn btn-danger py-3 px-5">Create Your Poll</a>
+    <div <?= isset($share->create_text) ?  'style="margin-top:47%"' :'' ?> class="container text-center">
+        <a href="<?php echo base_url('manage/create_page'); ?>" class="btn btn-danger py-3 px-5"><?= isset($share->create_text) ?  $share->create_text :'Create Your Poll' ?></a>
     </div>
     <div class="container mt-3 py-2">
         <div class="rel d-flex">
@@ -290,7 +249,7 @@ $msg =  utf8_decode($msg);
               <div class="carousel-item active">
                 <div class="row">
                 <?php foreach($top_poll as $value){ $result = json_decode($value['poll'])?>
-                    <div class="col-md 4">
+                    <div class="col-md-4">
                     <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
                         <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
@@ -332,7 +291,7 @@ $msg =  utf8_decode($msg);
               <div class="carousel-item active">
                 <div class="row">
                 <?php foreach($recent_poll as $value){ $result = json_decode($value['poll'])?>
-                    <div class="col-md 4">
+                    <div class="col-md-4">
                     <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
                         <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
@@ -363,5 +322,34 @@ $msg =  utf8_decode($msg);
           </div>
         </div>
     </div>
+    <?php if($share): ?>
+    <div style="background: <?= $share->bg_color ?>;color:  <?= $share->text_color ?>" class="float">
+        <a style="color:  <?= $share->text_color ?>" href="whatsapp://send?text=<?= $msg ?>" action="share/whatsapp/share" target="_blank">
+            <div class="w-100">
+                <?= $share->text ?>
+            </div>
+            </a>
+        
+    </div>
+    <?php endif; ?>
+    <?php  if($d_status){ ?>
+    <script>
+    $('.append').html('<div class="dot-pulse my-5"></div>');
+    fetch(`<?php echo base_url('manage/result/'.$poll_data['share_id']) ?>`)
+        .then(res => res.json() )
+        .then(function (data) {
+            $(".append").html(`${data.msg}`);
+    });
+    </script>
+    <?php }?>
+    <script>
+function my() {
+
+      var Text = document.getElementById("foo");
+      Text.select();
+      navigator.clipboard.writeText(Text.value);
+    
+  }
+</script>
 
     <!-- -------------------------------Futtter Div----------------------------------->

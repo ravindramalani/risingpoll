@@ -116,7 +116,7 @@
                                 <?php if($this->session->flashdata('email')) : ?>
                                 <?php echo $this->session->flashdata('email'); ?>
                                 <?php endif; ?>
-                            <div class="input-group mb-4">
+                            <!-- <div class="input-group mb-4">
                                 <div class="row">
                                     <div class="col-md-9">
                                         <input type="email" name="txtemail" placeholder="Verify Otp" class="form-control  input-s1">
@@ -125,7 +125,7 @@
                                         <button type="submit" class="btn btn-primary w-100">Otp</button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="input-group inputshdw mb-4">
                                 <input type="password" name="txtpassword" placeholder="Password"
                                     class="form-control  input-s1">

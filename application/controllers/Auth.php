@@ -32,7 +32,7 @@ class Auth extends CI_Controller {
                 $this->session->set_userdata('fname',$login['name']);
                 redirect(base_url('dashboard'));
             }else{
-                $this->session->set_flashdata('error','Invalid login details.Please try again.');
+                $this->session->set_flashdata('error','<div class="text-danger">Invalid login details.Please try again.</div>');
                 redirect('auth/login');
             }
         }else{

@@ -57,7 +57,9 @@
                   <p class="h4">Log in to your account</p>
                   <p class="h6">Or <a href="<?= base_url('auth/signup') ?>">create an account</a></p>
                   </div>
-                    
+                  <?php if($this->session->flashdata('error')) : ?>
+                        <?php echo $this->session->flashdata('error'); ?>
+                    <?php endif; ?>
                   <div class="form-group has-feedback">
                     <label>Email</label>
                     <input type="text" name="txtemail" class="form-control mb-1" placeholder="Email">

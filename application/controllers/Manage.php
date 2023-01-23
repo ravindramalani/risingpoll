@@ -36,8 +36,26 @@ class Manage extends CI_Controller {
         }elseif($this->input->post('name') == 'u_name'){
             $data['name'] = $this->input->post('status');
         }
+        if($this->input->post('color')){
+            $custom['text_color'] = $this->input->post('text_color');
+            $custom['bg_color'] = $this->input->post('bg_color');
+            $custom['text'] = $this->input->post('text');
+            $custom['vote_text'] = $this->input->post('vote_text');
+            $custom['result_text'] = $this->input->post('result_text');
+            $custom['create_text'] = $this->input->post('create_text');
+            $custom['other_share'] = $this->input->post('other_share');
+            $data['custom_button'] = json_encode($custom,JSON_UNESCAPED_UNICODE);
+        }
+        if($this->input->post('end_date_name')){
+            $data['end_date'] = $this->input->post('end_date_name');
+        }
+        if($this->input->post('custo')){
+            $data['share_msg'] = $this->input->post('custo');
+        }
         if($this->db_create_poll->db_update_poll($data,$share_id)){
             echo true;
+        }else{
+            echo 0;
         }
     }
     public function create_page_submit(){
@@ -50,13 +68,13 @@ class Manage extends CI_Controller {
         $op1 = $this->input->post('option')[0];
         $op2 = $this->input->post('option')[1];
         if($this->form_validation->run() && $op1 && $op2){ 
-            $poll['title'] = $this->input->post('title');  
+            $poll['title'] = htmlspecialchars($this->input->post('title'));  
             if($_FILES['head_img']['name']){
                 $poll['head_img'] = $this->image_upload('head_img');
             }
             $i=0;
             foreach ($this->input->post('option') as $value) {
-                $poll['option']['option_'.$i]['text'] = $value;
+                $poll['option']['option_'.$i]['text'] = htmlspecialchars($value);
                 $poll['option']['option_'.$i]['option_img'] = '';
                 $poll['option']['option_'.$i]['option_count'] = 0;
                 $i++;
@@ -64,25 +82,25 @@ class Manage extends CI_Controller {
             $data['share_id'] = uniqid(11);
             $data['poll'] = json_encode($poll,JSON_UNESCAPED_UNICODE);
             if($this->input->post('m_private')){
-                $data['private'] = $this->input->post('m_private');
+                $data['private'] = htmlspecialchars($this->input->post('m_private'));
             }
             if($this->input->post('one_vote_ip')){
-                $data['ip'] = $this->input->post('one_vote_ip');
+                $data['ip'] = htmlspecialchars($this->input->post('one_vote_ip'));
             }
             if($this->input->post('end_date')){
-                $data['end_date'] = $this->input->post('end_date');
+                $data['end_date'] = htmlspecialchars($this->input->post('end_date'));
             }
             if($this->input->post('u_name')){
-                $data['name'] = $this->input->post('u_name');
+                $data['name'] = htmlspecialchars($this->input->post('u_name'));
             }
             if($this->input->post('one_vote_session')){
-                $data['session'] = $this->input->post('one_vote_session');
+                $data['session'] = htmlspecialchars($this->input->post('one_vote_session'));
             }
             if($this->input->post('h_result')){
-                $data['hide_result'] = $this->input->post('h_result');
+                $data['hide_result'] = htmlspecialchars($this->input->post('h_result'));
             }
             if($this->input->post('cust_msg')){
-                $data['share_msg'] =  $this->input->post('cust_msg');
+                $data['share_msg'] =  htmlspecialchars($this->input->post('cust_msg'));
             }else{
                 $data['share_msg'] = '{title} {link}';
             }
@@ -100,11 +118,13 @@ class Manage extends CI_Controller {
     }
     public function share_page($share_id){
         if($this->session->userdata('user_id') == $share_id){
+            
             $data['top_poll'] = $this->db_create_poll->top_poll();
             $data['recent_poll'] = $this->db_create_poll->recent_poll();
-            $data['poll_data'] = $this->db_create_poll->fetch_poll($share_id);
+            $data['poll_data'] = $this->db_create_poll->fetch_poll($share_id,false);
+            $data['poll'] = json_decode($data['poll_data']['poll']);
             if($data['poll_data']){
-                $this->load->view('frontent/common/header');
+                $this->load->view('frontent/common/header',$data);
                 $this->load->view('frontent/share',$data);
                 $this->load->view('frontent/common/footer');
             }else{
@@ -118,9 +138,10 @@ class Manage extends CI_Controller {
         if($this->session->userdata('user_id') != $share_id){
             $data['top_poll'] = $this->db_create_poll->top_poll();
             $data['recent_poll'] = $this->db_create_poll->recent_poll();
-            $data['poll_data'] = $this->db_create_poll->fetch_poll($share_id);
+            $data['poll_data'] = $this->db_create_poll->fetch_poll($share_id,true);
+            $data['poll'] = json_decode($data['poll_data']['poll']);
             if($data['poll_data']){
-                $this->load->view('frontent/common/header');
+                $this->load->view('frontent/common/header',$data);
                 $this->load->view('frontent/user_share',$data);
                 $this->load->view('frontent/common/footer');
             }else{
@@ -134,7 +155,8 @@ class Manage extends CI_Controller {
         $url = $_SERVER['HTTP_REFERER'];
         $pattern = "/user_share/i";
         $status = preg_match($pattern, $url);
-        $poll_data = $this->db_create_poll->fetch_poll($share_id);
+        $stat = false;
+        $poll_data = $this->db_create_poll->fetch_poll($share_id,$stat);
         if($poll_data['name'] == 'on' && !$status){
             $names = $this->db_create_poll->fetch_names($share_id);
         }
@@ -190,7 +212,8 @@ class Manage extends CI_Controller {
         echo json_encode($res);
     }
     public function response($share_id){
-    $poll = $this->db_create_poll->fetch_poll($share_id);
+   
+    $poll = $this->db_create_poll->fetch_poll($share_id,false);
     if($this->session->userdata('session') != $share_id || $poll['session'] != 'on'){
         if($poll['ip'] == 'on'){
             $ip = $this->get_client_ip();
@@ -200,16 +223,16 @@ class Manage extends CI_Controller {
         $name = $poll['name'];
         $op = $this->input->post('option');
         if($poll['name'] == 'on'){
-            $name = $this->input->post('name');
+            $name = htmlspecialchars($this->input->post('name'));
         }
         if($op != 'undefined'){
-            $poll_data = json_decode($this->db_create_poll->fetch_poll($share_id)['poll']);
+            $poll_data = json_decode($this->db_create_poll->fetch_poll($share_id,false)['poll']);
             $poll_data->option->$op->option_count +=1;
             $updated_poll = json_encode($poll_data,JSON_UNESCAPED_UNICODE) ;
             $res = $this->db_create_poll->update_poll($share_id,$op,$updated_poll,$ip,$name);
             if($res == 1){
                     $res = array('msg' => '<p class="text-success text-center">Voted</p>');
-                   
+                    $this->session->set_userdata('vote',true);
                     if($poll['session'] == 'on'){
                         $this->session->set_userdata('session', $share_id);
                     }

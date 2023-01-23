@@ -156,7 +156,7 @@
                 <div class="carousel-item active">
                     <div class="row">
                     <?php foreach($top_poll as $value){ $result = json_decode($value['poll'])?>
-                    <div class="col-md 4">
+                    <div class="col-md-4">
                     <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
                         <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
@@ -193,7 +193,7 @@
               <div class="carousel-item active">
                 <div class="row">
                 <?php foreach($recent_poll as $value){ $result = json_decode($value['poll'])?>
-                    <div class="col-md 4">
+                    <div class="col-md-4">
                     <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
                     <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
@@ -233,6 +233,14 @@ $("#head_img").change(function(){
     $('.preview').html('<img id="blah" height="183px" width="100%" src="#" alt="your image" />');
     readURL(this);
 });
+</script>
+<script>
+$('#customSwitches0').change(function() {
+    $("#customs_share").toggle("false");
+})
+$('#log11').change(function() {
+    $("#end_date").toggle("false");
+})
 </script>
 
 
