@@ -47,11 +47,14 @@ $title = $poll->title;
     gtag('config', 'UA-127456458-54');
     </script>
     <!-- font-awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title><?= $title; ?></title>
     <style>
+        .bg-special{
+            background : black;
+        }
         .user-image{
             float: left;
             width: 25px;
@@ -99,8 +102,11 @@ $title = $poll->title;
                         <a class="nav-link navi" href="<?= base_url('manage/create_page') ?>">Create Poll</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link navi" href="#">About</a>
+                        <a class="nav-link navi" href="">Monetization Policy</a>
                     </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link navi" href="<?= base_url('blog'); ?>">Blog</a>
+                    </li>  
                     <?php if(!$this->session->userdata('fname')){?>
                     <li class="nav-item  hide-d">
                         <a class="nav-link navi" href="<?= base_url('auth/login') ?>">Login</a>
@@ -146,10 +152,10 @@ $title = $poll->title;
                     </li> -->
                     <?php else: ?>
                         <li class="nav-item mx-2">
-                        <a class="nav-link navi" href="<?= base_url('auth/login') ?>">Login</a>
+                        <a class="nav-link navi bg-special px-3" href="<?= base_url('auth/login') ?>">Login</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link navi" href="<?= base_url('auth/signup') ?>">Sign up</a>
+                        <a class="nav-link navi bg-special px-3" href="<?= base_url('auth/signup') ?>">Sign up</a>
                     </li>
                     <?php endif; ?>
                     

@@ -50,7 +50,7 @@
                     <input type="text" name="title" placeholder="Type your question here..." class="form-control shadow-none">
                     <input id="head_img" class="d-none" type="file" name="head_img">
                     <button id="upload_head" type="button" class="absolute imgicon">
-                        <i class="fa fa-picture-o"></i>
+                        <i class="fa fa-image"></i>
                     </button>
                 </div>
                 <div class="preview py-2">

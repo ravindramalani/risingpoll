@@ -74,10 +74,12 @@ class Manage extends CI_Controller {
             }
             $i=0;
             foreach ($this->input->post('option') as $value) {
-                $poll['option']['option_'.$i]['text'] = htmlspecialchars($value);
-                $poll['option']['option_'.$i]['option_img'] = '';
-                $poll['option']['option_'.$i]['option_count'] = 0;
-                $i++;
+                if($value){
+                    $poll['option']['option_'.$i]['text'] = htmlspecialchars($value);
+                    $poll['option']['option_'.$i]['option_img'] = '';
+                    $poll['option']['option_'.$i]['option_count'] = 0;
+                    $i++;
+                }
             }
             $data['share_id'] = uniqid(11);
             $data['poll'] = json_encode($poll,JSON_UNESCAPED_UNICODE);

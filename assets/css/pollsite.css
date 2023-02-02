@@ -418,7 +418,7 @@
               display: block;
               text-align: left;
               background:var(--main_color);
-              color: #222;
+              color: rgb(255, 255, 255);
               padding: 20px;
             }
             
