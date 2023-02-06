@@ -1,40 +1,34 @@
 <style>
-.pri {
-    border: 1px solid gray;
-    margin: 25px;
-    padding: 25px;
-}
+
 </style>
 
 
 <section class="container">
     
     <div class="m-3 p-3 border">
-        <h2>Privacy policy - Rising poll </h2>  
-        <h3>Foreword</h3>
+        <h1>Privacy policy - Rising poll </h1>  
         Protecting privacy is our top priority. To ensure this, we securely encrypt all IP addresses collected during polls and store them in our database. For legal purposes, we temporarily maintain the plain-text IP address of the poll creator, but this is done for a limited time only. We strongly advise you to consider the consequences before entering any personal information of others in a poll. Rising Poll does not tolerate any form of bullying, harassment, or spreading of false information.
         
-        <h3>1. An overview of data protection</h3>
-        <h4>General</h4>
+        <h2>1. An overview of data protection</h2>
         Overview of Personal Information Handling Personal information refers to any data that can identify you. Our privacy policy provides in-depth information on this topic.
-        <h4>Data Collection on Our Website</h4>
-        <h5>Who is responsible for collecting data on this website?</h5> 
+        <b>Data Collection on Our Website</b>
+        <b>Who is responsible for collecting data on this website?</b> 
         The data collected on this website is processed by the website operator. You can find the operator's contact information in the contact us section of the website.
-        <h4>How do we collect your data?</h4> 
+        <b>How do we collect your data?</b> 
         Some data is collected when you provide it to us, such as information entered on a contact form. Other data is automatically collected by our IT systems when you visit the website. This includes technical data like the browser and operating system you are using and the time you accessed the page.
-        What do we use your data for? 
+        <b>What do we use your data for?</b> 
         Some of the data is collected to ensure proper website functioning. Other data is used for analyzing visitor behavior.
-        What rights do you have regarding your data? 
+        <b>What rights do you have regarding your data?</b> 
         You have the right to request information about stored data, its origin, recipients, and purpose of collection at no cost. You can also request correction, blocking, or deletion of the data. If you have further questions or concerns, you can contact us using the information in the contact us section. You can also file a complaint with the relevant regulatory authorities.
-        Analytics and Third-Party Tools 
+        <h3>Analytics and Third-Party Tools</h3> 
         During your visit to our website, your browsing behavior may be analyzed statistically. This is usually done through cookies and analytics. The analysis is usually anonymous and cannot identify you. You can opt-out of this analysis or prevent it by not using certain tools. Our privacy policy provides more information.
-        Do Not Track (DNT) 
+        <h3>Do Not Track (DNT)</h3> 
         To respect users' preferences for "Do Not Track," we have implemented various mechanisms on our website. If a user's browser sends a "Do Not Track" signal, all analytics-related requests are blocked. We also do not send requests to ad-related third parties in embedded content. On our website, all ad server requests are delayed until user consent is obtained for users who require approval. Our consent solution is provided by Quantcast Choice and displays an easy-to-use overlay for each user who requires approval.
-        2. General Information and Mandatory Information Notice of Party Responsible for Website The party responsible for processing data on this website is:
-        Eniacworld Media Private Limited
+        <h2>2. General Information and Mandatory Information Notice of Party Responsible for Website The party responsible for processing data on this website is:</h2>
+        <address> Eniacworld Media Private Limited
         F-60 Apna Bazar, Lata Circle, Jhotwara
         Jaipur, Rajasthan, India (302012)
-        Email: contact@eniacworld.com
+        Email: contact@eniacworld.com </address>
         The responsible party is the individual or company who makes decisions about the purposes and methods of processing personal data (such as names and email addresses).
         Revoking Consent for Data Processing Many data processing operations require your express consent. You may revoke your consent at any time with future effect. An informal email is sufficient for this request. Data processed before we receive your request may still be legally processed.
         Data Portability 
