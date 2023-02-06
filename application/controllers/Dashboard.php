@@ -12,6 +12,8 @@ class Dashboard extends CI_Controller {
         }
         $this->load->model('db_create_poll');
     }
+    // legal pages
+
     public function index(){
         $data['signal'] = true;
         $data['polls'] = $this->db_create_poll->fetch_poll_all();
