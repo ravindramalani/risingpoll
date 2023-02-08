@@ -24,7 +24,7 @@ class Manage extends CI_Controller {
     }
     public function about_us(){
         $this->load->view('frontent/common/header');
-        $this->load->view('frontent/privacy');
+        $this->load->view('frontent/about_us');
         $this->load->view('frontent/common/footer');
     } 
     public function create_page(){
