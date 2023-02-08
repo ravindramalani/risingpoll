@@ -31,6 +31,15 @@ class Manage extends CI_Controller {
         $this->load->view('frontent/common/header');
         $this->load->view('frontent/terms');
         $this->load->view('frontent/common/footer');
+    }
+    public function contact(){
+        $this->load->view('frontent/common/header');
+        $this->load->view('frontent/contact');
+        $this->load->view('frontent/common/footer');
+    }    public function disclaimer(){
+        $this->load->view('frontent/common/header');
+        $this->load->view('frontent/disclaimer');
+        $this->load->view('frontent/common/footer');
     } 
     public function create_page(){
         $data['top_poll'] = $this->db_create_poll->top_poll();

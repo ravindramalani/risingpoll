@@ -52,7 +52,7 @@ p{
     </div>
     
     <div class="border w-75 m-auto p-3 ">
-        <h1>Privacy policy - Rising poll</h1>  
+        <h1>About us</h1>  
         <p>Protecting privacy is our top priority. To ensure this, we securely encrypt all IP addresses collected during polls and store them in our database. For legal purposes, we temporarily maintain the plain-text IP address of the poll creator, but this is done for a limited time only. We strongly advise you to consider the consequences before entering any personal information of others in a poll. Rising Poll does not tolerate any form of bullying, harassment, or spreading of false information.</p>
         
         <h2>1. An overview of data protection</h2>
