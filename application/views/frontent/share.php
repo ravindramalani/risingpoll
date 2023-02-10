@@ -143,8 +143,8 @@ $msg = preg_replace('/{link}/i', base_url('poll/'.$poll_data['share_id']) , $msg
                 <a href="whatsapp://send?text=<?= $msg ?>" action="share/whatsapp/share" target="_blank" class="btn w-100 wts btn-primary custom my-2">
                     <i class="fa fa-whatsapp text-white" aria-hidden="true"></i> Whatsapp
                 </a>
-                <a class="btn w-100 insta btn-primary custom my-2">
-                    <i class="fa fa-instagram text-white" aria-hidden="true"></i> Instagram
+                <a id="share_custom" class="btn w-100 insta btn-primary custom my-2">
+                    <i class="fa fa-share text-white" aria-hidden="true"></i> Share
                 </a>
             </div>
         </div>
@@ -204,7 +204,7 @@ $msg = preg_replace('/{link}/i', base_url('poll/'.$poll_data['share_id']) , $msg
                 <div class="row">
                 <?php foreach($top_poll as $value){ $result = json_decode($value['poll'])?>
                     <div class="col-md-4">
-                    <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
+                    <a href="<?php echo base_url('poll/'.$value['share_id']) ?>$share">
                         <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
                           <div class="card-body">
@@ -238,7 +238,7 @@ $msg = preg_replace('/{link}/i', base_url('poll/'.$poll_data['share_id']) , $msg
                 <div class="row">
                 <?php foreach($recent_poll as $value){ $result = json_decode($value['poll'])?>
                     <div class="col-md-4">
-                    <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
+                    <a href="<?php echo base_url('poll/'.$value['share_id']) ?>#share">
                         <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
                           <div class="card-body">
@@ -269,5 +269,19 @@ function my() {
       navigator.clipboard.writeText(Text.value);
     
   }
+</script>
+<script>
+$('#share_custom').on('click', () => {
+  if (navigator.share) {
+    navigator.share({
+        title: '<?= $poll->title  ?>', 
+        text: '<?= $msg ?>',
+      })
+      .then(() => console.log('Successful share'))
+      .catch((error) => console.log('Error sharing', error));
+  } else {
+    console.log('Share not supported on this browser, do it the old way.');
+  }
+});
 </script>
     <!-- -------------------------------Futtter Div----------------------------------->

@@ -20,7 +20,7 @@
           </p>
           <div class="towbtn txtc mgt30 row">
             <div class="col-md-6">
-              <a href="<?= base_url('manage/create_page') ?>" class="btn btn-lg bgblk blkbtn">
+              <a href="<?= base_url('create') ?>" class="btn btn-lg bgblk blkbtn">
                 Create Poll
                 </a>
             </div>
@@ -182,7 +182,7 @@
 
     <!-- Poll monitizing divs -->
 
-    <div class="infodiv py-5">
+    <!-- <div class="infodiv py-5">
       <h1 class="infohdng">Start Monetizing Your Polls</h1>
       <div class="container msgdiv">
         <div class="row my-5">
@@ -215,7 +215,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Questions Div -->
 

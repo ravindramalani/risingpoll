@@ -50,6 +50,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['poll/(:any)'] = "manage/user_share/$1";
+$route['privacy'] = "manage/privacy";
+$route['login'] = "auth/login";
+$route['signup'] = "auth/signup";
+$route['signup'] = "auth/signup";
+$route['create'] = "manage/create_page";
 $route['default_controller'] = 'manage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

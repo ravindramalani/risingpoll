@@ -4,8 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Login</title>
-
+  <title>Log in to your account - RisingPoll.com</title>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:site_name" content="RisingPoll" />
+  <meta property="og:title" content="Log in to your account - RisingPoll.com" />
+  <meta property="og:description" content="Welcome buddy to RisingPoll! Enter your email address and password to login to your account." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="<?= base_url('login'); ?>" />
+  <!-- <meta property="og:image" content="" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" /> -->
+  <meta property="og:locale" content="en" />
+  <meta name="apple-mobile-web-app-title" content="RisingPoll" />
+  <meta name="application-name" content="RisingPoll" />
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/login.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
@@ -55,7 +66,7 @@
                 <div class="form">
                   <div class="f1">
                   <p class="h4">Log in to your account</p>
-                  <p class="h6">Or <a href="<?= base_url('auth/signup') ?>">create an account</a></p>
+                  <p class="h6">Or <a href="<?= base_url('signup') ?>">create an account</a></p>
                   </div>
                   <?php if($this->session->flashdata('error')) : ?>
                         <?php echo $this->session->flashdata('error'); ?>

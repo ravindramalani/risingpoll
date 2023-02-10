@@ -13,7 +13,23 @@ class Manage extends CI_Controller {
 
     public function index()
     {        
-		$this->load->view('frontent/common/header');
+        $data['meta_title'] = 'RisingPoll: Create your poll';
+        $data['meta'] = '
+        <meta name="keywords" content="risingpoll,polls,how to create polls online, voting poll onine, how to create risingpoll, create poll on whatsapp, poll maker online,survey maker onine">
+        <meta name="description" content="Create surveys, real-time polls and online voting at no cost with RisingPoll. Creating a poll with us only take few seconds and now you can create polls online without any registration.">
+        <meta name="subject" content="Online voting polls">
+        <meta name="copyright" content="Risingpoll.com">
+        <meta name="language" content="En">
+        <meta name="pagename" content="RisingPoll: Create your poll">
+        <meta name="coverage" content="Worldwide">
+        <meta name="distribution" content="Global">
+        <meta name="target" content="all">
+        <meta name="og:type" content="Online voting poll">
+        <meta name="og:site_name" content="RisingPoll">
+        <meta property="og:locale" content="en" />
+        <meta name="og:description" content="Create surveys, real-time polls and online voting at no cost with RisingPoll. Creating a poll with us only take few seconds and now you can create polls online without any registration.">
+        ';
+		$this->load->view('frontent/common/header',$data);
 		$this->load->view('frontent/home');
 		$this->load->view('frontent/common/footer');
     }
@@ -23,9 +39,25 @@ class Manage extends CI_Controller {
         $this->load->view('frontent/common/footer');
     } 
     public function create_page(){
+        $data['meta_title'] = 'Create a Poll - Free Poll Maker - Risingpoll.com';
+        $data['meta'] = '
+        <meta name="keywords" content="risingpoll,polls,how to create polls online, voting poll onine, how to create risingpoll, create poll on whatsapp, poll maker online,survey maker onine">
+        <meta name="description" content="Create surveys, real-time polls and online voting at no cost with RisingPoll. Creating a poll with us only take few seconds and now you can create polls online without any registration.">
+        <meta name="subject" content="Online voting polls">
+        <meta name="copyright" content="Risingpoll.com">
+        <meta name="language" content="En">
+        <meta name="pagename" content="Create Online Poll - Risingpoll">
+        <meta name="coverage" content="Worldwide">
+        <meta name="distribution" content="Global">
+        <meta name="target" content="all">
+        <meta name="og:type" content="Online voting poll">
+        <meta name="og:site_name" content="RisingPoll">
+        <meta property="og:locale" content="en" />
+        <meta name="og:description" content="Create surveys, real-time polls and online voting at no cost with RisingPoll. Creating a poll with us only take few seconds and now you can create polls online without any registration.">
+        ';
         $data['top_poll'] = $this->db_create_poll->top_poll();
         $data['recent_poll'] = $this->db_create_poll->recent_poll();
-        $this->load->view('frontent/common/header');	
+        $this->load->view('frontent/common/header',$data);	
         $this->load->view('frontent/create_page',$data);	
         $this->load->view('frontent/common/footer');	
     }
@@ -138,7 +170,7 @@ class Manage extends CI_Controller {
                 redirect();
             }
         }else{
-            redirect(base_url('manage/user_share/'.$share_id));
+            redirect(base_url('poll/'.$share_id));
         }
     }
     public function user_share($share_id){

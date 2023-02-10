@@ -58,7 +58,7 @@ hr{
                     </a>
                 </li>
                 <li class="nav-item links">
-                    <a href="<?= base_url('manage/create_page') ?>">
+                    <a href="<?= base_url('create') ?>">
                         <i class="fa fa-flag mx-2"></i> Create poll
                     </a>
                 </li>

@@ -4,8 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login</title>
-
+    <title>Sign Up - Create a Free Account - RisingPoll.com</title>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:site_name" content="RisingPoll" />
+    <meta property="og:title" content="Sign Up - Create a Free Account - RisingPoll.com" />
+    <meta property="og:description" content="Create a free account at RisingPoll to manage your polls." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<?= base_url('signup'); ?>" />
+    <!-- <meta property="og:image" content="" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" /> -->
+    <meta property="og:locale" content="en" />
+    <meta name="apple-mobile-web-app-title" content="RisingPoll" />
+    <meta name="application-name" content="RisingPoll" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/login.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
@@ -148,7 +159,7 @@
                                     aria-describedby="helpId">Create your account</button>
                             </div>
                             <div class="text-center w-100 mt-3" style="border-top: outset;">
-                                <p class="text-muted ">Already Registered? <a href="<?= base_url('auth/login') ?>"
+                                <p class="text-muted ">Already Registered? <a href="<?= base_url('login') ?>"
                                         class="ml-1" style="font-size: 1.3rem;text-decoration: underline;"> Login</a>
                                 </p>
                             </div>
