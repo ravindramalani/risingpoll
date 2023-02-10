@@ -105,7 +105,7 @@ p{
         
         
     </div>
-    <div class="border w-75 m-auto p-3 mt-3 ">
+    <div class="border w-75 mx-auto p-3 my-3">
     <P style="color: #1F5AB2;"><b>Common ID Cookie</b></p> 
         <p>This website uses cookies and similar tracking technologies, such as the Common ID cookie, to provide its services. Cookies are essential for measuring the effectiveness of advertising and maintaining a strong online advertising industry. The Common ID cookie stores a unique user ID in the first-party domain, which is accessible to our advertising partners. This ID can be used to improve user matching, especially for delivering ads to iOS and MacOS browsers. Users can opt out of the Common ID tracking cookie by clicking here.</p>
         <p style="color: #1F5AB2;"><b>Advertising Privacy Settings FOR EU USERS ONLY:</b></p>
