@@ -37,6 +37,25 @@ class Manage extends CI_Controller {
         $this->load->view('frontent/common/header');
         $this->load->view('frontent/privacy');
         $this->load->view('frontent/common/footer');
+    }
+    public function about(){
+        $this->load->view('frontent/common/header');
+        $this->load->view('frontent/about');
+        $this->load->view('frontent/common/footer');
+    }
+    public function terms(){
+        $this->load->view('frontent/common/header');
+        $this->load->view('frontent/terms');
+        $this->load->view('frontent/common/footer');
+    }
+    public function contact(){
+        $this->load->view('frontent/common/header');
+        $this->load->view('frontent/contact');
+        $this->load->view('frontent/common/footer');
+    }    public function disclaimer(){
+        $this->load->view('frontent/common/header');
+        $this->load->view('frontent/disclaimer');
+        $this->load->view('frontent/common/footer');
     } 
     public function create_page(){
         $data['meta_title'] = 'Create a Poll - Free Poll Maker - Risingpoll.com';

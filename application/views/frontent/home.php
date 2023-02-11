@@ -46,7 +46,7 @@
               <h1 class="msghdng">Create Poll</h1>
               <p class="msgpara">
                 Want to know which soccer player is the best or who should be the
-				team leader? Create polls and get everyone's opinion in no time.
+				        team leader? Create polls and get everyone's opinion in no time.
               </p>
             </div>
           </div>
@@ -56,7 +56,7 @@
               <h1 class="msghdng">Graphical Result</h1>
               <p class="msgpara">
                 Not everyone likes numbers and we knew that, so we made a bar 
-				graph of your result for better understanding.
+				      graph of your result for better understanding.
               </p>
             </div>
           </div>
