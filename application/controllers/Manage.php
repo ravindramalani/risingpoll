@@ -181,6 +181,27 @@ class Manage extends CI_Controller {
             $data['recent_poll'] = $this->db_create_poll->recent_poll();
             $data['poll_data'] = $this->db_create_poll->fetch_poll($share_id,false);
             $data['poll'] = json_decode($data['poll_data']['poll']);
+            $data['meta_title'] =  $data['poll']->title;
+            $desc = 'What&#39;s your opinion? Vote now: ';
+            foreach($data['poll']->option as $value){
+                $desc .= $value->text.', ';
+                
+            }
+            $data['meta'] = '
+            <meta name="keywords" content="risingpoll,polls,how to create polls online, voting poll onine, how to create risingpoll, create poll on whatsapp, poll maker online,survey maker onine">
+            <meta name="description" content="'.$desc.' ...">
+            <meta name="subject" content="'.$data['meta_title'].'">
+            <meta name="copyright" content="Risingpoll.com">
+            <meta name="language" content="En">
+            <meta name="pagename" content="'.$data['meta_title'].'">
+            <meta name="coverage" content="Worldwide">
+            <meta name="distribution" content="Global">
+            <meta name="target" content="all">
+            <meta name="og:type" content="'.$data['meta_title'].'">
+            <meta name="og:site_name" content="RisingPoll">
+            <meta property="og:locale" content="en" />
+            <meta name="og:description" content="'.$desc.' ...">
+            ';
             if($data['poll_data']){
                 $this->load->view('frontent/common/header',$data);
                 $this->load->view('frontent/share',$data);
@@ -198,6 +219,27 @@ class Manage extends CI_Controller {
             $data['recent_poll'] = $this->db_create_poll->recent_poll();
             $data['poll_data'] = $this->db_create_poll->fetch_poll($share_id,true);
             $data['poll'] = json_decode($data['poll_data']['poll']);
+            $data['meta_title'] =  $data['poll']->title;
+            $desc = 'What&#39;s your opinion? Vote now: ';
+            foreach($data['poll']->option as $value){
+                $desc .= $value->text.', ';
+                
+            }
+            $data['meta'] = '
+            <meta name="keywords" content="risingpoll,polls,how to create polls online, voting poll onine, how to create risingpoll, create poll on whatsapp, poll maker online,survey maker onine">
+            <meta name="description" content="'.$desc.'...">
+            <meta name="subject" content="'.$data['meta_title'].'">
+            <meta name="copyright" content="Risingpoll.com">
+            <meta name="language" content="En">
+            <meta name="pagename" content="'.$data['meta_title'].'">
+            <meta name="coverage" content="Worldwide">
+            <meta name="distribution" content="Global">
+            <meta name="target" content="all">
+            <meta name="og:type" content="'.$data['meta_title'].'">
+            <meta name="og:site_name" content="RisingPoll">
+            <meta property="og:locale" content="en" />
+            <meta name="og:description" content="'.$desc.'...">
+            ';
             if($data['poll_data']){
                 $this->load->view('frontent/common/header',$data);
                 $this->load->view('frontent/user_share',$data);
