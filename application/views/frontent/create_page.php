@@ -1,39 +1,4 @@
 
-
-
-
-
-
-    <!-- -----------------------Create A Poll Form-------------------- -->
-
-    <!-- <div class="container cpform my-5 ">
-        <h2>Start Creating your poll today ?</h2>
-
-
-        <form class="createform">
-            <label class="formhdng">Title</label>
-            <div class="form-group">
-              <input type="text" class="form-control formhdng" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Type your question here  ">
-            </div>
-            <label class="formhdng">Answer Options</label>
-            <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Option 1">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Option 2">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Option 3">
-            </div>
-            
-            <button type="submit" class="btn submitbtn">Submit</button>
-
-          </form>
-
-
-    </div> -->
-
-
     <div>
         <div class="srvdiv">
 
@@ -157,7 +122,7 @@
                     <div class="row">
                     <?php foreach($top_poll as $value){ $result = json_decode($value['poll'])?>
                     <div class="col-md-4">
-                    <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
+                    <a href="<?php echo base_url('poll/'.$value['share_id']) ?>#create">
                         <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
                           <div class="card-body">
@@ -194,7 +159,7 @@
                 <div class="row">
                 <?php foreach($recent_poll as $value){ $result = json_decode($value['poll'])?>
                     <div class="col-md-4">
-                    <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
+                    <a href="<?php echo base_url('poll/'.$value['share_id']) ?>#create">
                     <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
                           <div class="card-body">

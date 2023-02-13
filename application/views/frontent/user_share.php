@@ -38,7 +38,7 @@
         border: #04ae42 !important;
     }
     .insta{
-        background: linear-gradient(269.64deg, #BC1888 12.05%, #DC2743 38.26%, #F09433 71.72%) !important;
+        background-color: #ff0052 !important;
         border: #BC1888 !important;
     }
     .radio{
@@ -218,8 +218,8 @@ $msg =  $msg;
                             <a href="whatsapp://send?text=<?= $msg ?>" action="share/whatsapp/share" target="_blank" class="btn w-100 wts btn-primary custom my-2">
                                 <i class="fa fa-whatsapp text-white" aria-hidden="true"></i> Whatsapp
                             </a>
-                            <a class="btn w-100 insta btn-primary custom my-2">
-                                <i class="fa fa-instagram text-white" aria-hidden="true"></i> Instagram
+                            <a id="share_custom" class="btn w-100 insta btn-primary custom my-2">
+                                <i class="fa fa-share text-white" aria-hidden="true"></i> Share
                             </a>
                         </div>
                     <?php  }
@@ -228,14 +228,14 @@ $msg =  $msg;
                         <a href="whatsapp://send?text=<?= $msg ?>" action="share/whatsapp/share" target="_blank" class="btn w-100 wts btn-primary custom my-2">
                             <i class="fa fa-whatsapp text-white" aria-hidden="true"></i> Whatsapp
                         </a>
-                        <a class="btn w-100 insta btn-primary custom my-2">
-                            <i class="fa fa-instagram text-white" aria-hidden="true"></i> Instagram
+                        <a id="share_custom" class="btn w-100 insta btn-primary custom my-2">
+                            <i class="fa fa-share text-white" aria-hidden="true"></i> Share
                         </a>
                     </div>
                    <?php } ?>
     </div>
     <div <?= isset($share->create_text) ?  'style="margin-top:47%"' :'' ?> class="container text-center">
-        <a href="<?php echo base_url('manage/create_page'); ?>" class="btn btn-danger py-3 px-5"><?= isset($share->create_text) ?  $share->create_text :'Create Your Poll' ?></a>
+        <a href="<?php echo base_url('create'); ?>" class="btn btn-danger py-3 px-5"><?= isset($share->create_text) ?  $share->create_text :'Create Your Poll' ?></a>
     </div>
     <div class="container mt-3 py-2">
         <div class="rel d-flex">
@@ -250,7 +250,7 @@ $msg =  $msg;
                 <div class="row">
                 <?php foreach($top_poll as $value){ $result = json_decode($value['poll'])?>
                     <div class="col-md-4">
-                    <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
+                    <a href="<?php echo base_url('poll/'.$value['share_id']) ?>#user">
                         <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
                           <div class="card-body">
@@ -292,7 +292,7 @@ $msg =  $msg;
                 <div class="row">
                 <?php foreach($recent_poll as $value){ $result = json_decode($value['poll'])?>
                     <div class="col-md-4">
-                    <a href="<?php echo base_url('manage/user_share/'.$value['share_id']) ?>">
+                    <a href="<?php echo base_url('poll/'.$value['share_id']) ?>#user">
                         <div class="card border-0 w-100">
                           <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
                           <div class="card-body">
@@ -351,5 +351,20 @@ function my() {
     
   }
 </script>
+<script>
+$('#share_custom').on('click', () => {
+  if (navigator.share) {
+    navigator.share({
+        title: '<?= $poll->title  ?>', 
+        text: '<?= $msg ?>',
+      })
+      .then(() => console.log('Successful share'))
+      .catch((error) => console.log('Error sharing', error));
+  } else {
+    console.log('Share not supported on this browser, do it the old way.');
+  }
+});
+</script>
+
 
     <!-- -------------------------------Futtter Div----------------------------------->

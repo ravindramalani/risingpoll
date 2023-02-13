@@ -192,7 +192,7 @@
             <div class="text-center">
                 <h3 class="text-danger">No Polls Available</h3>
                 <p class="">Start Creating Your Poll Today</p>
-                <a href="<?= base_url('manage/create_page') ?>" class="btn btn-primary custom my-3">Create Poll</a>
+                <a href="<?= base_url('create') ?>" class="btn btn-primary custom my-3">Create Poll</a>
             </div>
                 <?php endif; ?>
             </div>

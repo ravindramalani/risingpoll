@@ -412,7 +412,10 @@
               border-radius: 2px;
               padding: 0;
             }
-            
+            .col-md-4 a {
+              text-decoration: none;
+              color: black;
+            }
             #main #faq .card .card-header .btn-header-link {
               color:var(--white_color);
               display: block;

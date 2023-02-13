@@ -5,28 +5,12 @@
     } */
 </style>
     <div class="container-fluid futter">
-        <h1 class="futterhdng">Copyright@ Eniacoder</h1>
+        <h1 class="futterhdng">© <?= date("Y") ?> Risingpoll. All rights reserved.</h1>
+        <div>
+            <a href="<?= base_url('privacy') ?>">Privacy</a>
+        </div>
     </div>
-    <!-- <script>
-        $('#vote').click(function(){
-            var formData = new FormData();
-            formData.append('option', $('input[name="option"]:checked').val());
-            
-            fetch(`<?php echo base_url('manage/response/'.$poll_data['share_id']) ?>`, {
-                method: "POST",
-                body: formData,
-            })
-            .then(res => res.json() )
-            .then(data => console.log(data.msg));
-        })
-    </script> -->
-    <!-- <script>
-       $('#result , #back').click(function(){
-            $('.opt').toggle('false');
-            $('.box-result').toggle('false');
-       })
-    </script> -->
-
+    
 <script>
 var i=2;
 function create_element(){
