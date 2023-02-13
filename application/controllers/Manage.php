@@ -8,9 +8,10 @@ class Manage extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('db_create_poll');
+
     }
     
-
+    
     public function index()
     {        
 		$this->load->view('frontent/common/header');
@@ -36,7 +37,8 @@ class Manage extends CI_Controller {
         $this->load->view('frontent/common/header');
         $this->load->view('frontent/contact');
         $this->load->view('frontent/common/footer');
-    }    public function disclaimer(){
+    }    
+    public function disclaimer(){
         $this->load->view('frontent/common/header');
         $this->load->view('frontent/disclaimer');
         $this->load->view('frontent/common/footer');
@@ -308,6 +310,29 @@ class Manage extends CI_Controller {
         else
             $ipaddress = 'UNKNOWN';
         return $ipaddress;
+    }
+    public function contact_data(){
+        $this->load->model('db_message');
+        $this->form_validation->set_rules('name','Name','required');
+        $this->form_validation->set_rules('email','Email','required|valid_email');
+        $this->form_validation->set_rules('subject','SUBJECT','required');
+        $this->form_validation->set_rules('message','MESSAGE','required');
+
+        if($this->form_validation->run()){
+            
+            
+            $data['contact_name'] = $this->input->post('name');
+            $data['contact_email'] = $this->input->post('email');
+            $data['contact_subject'] = $this->input->post('subject');
+            $data['contact_message'] = $this->input->post('message');
+            $this->db_message->contact_us($data);
+        }
+        else{     
+            $this->contact();      
+        }
+
+
+        
     }
 }
 
