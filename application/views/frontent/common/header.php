@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 $url = base_url(); 
-$title = $meta_title;;
+$title = $meta_title;
 if(isset($poll)){
 $title = $poll->title;
     if(isset($poll->head_img)){
