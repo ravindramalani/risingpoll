@@ -9,6 +9,9 @@
         <div>
             <a href="<?= base_url('privacy') ?>">Privacy</a>
         </div>
+        <div>
+            <a href="<?= base_url('contact') ?>">contact</a>
+        </div>
     </div>
     
 <script>
