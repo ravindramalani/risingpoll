@@ -8,11 +8,13 @@ class Db_message extends CI_Model {
     public function contact_us($data){
         $this->db->insert('contact_us', $data);
         if($this->db->affected_rows($data))
-                {
-                    $status = 1;
-                }else{
-                    $status = 0;
-                }
+        {
+            $status = 1;
+        }
+        else
+        {
+            $status = 0;
+        }
     }
 
 
