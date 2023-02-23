@@ -10,7 +10,7 @@
             <a href="<?= base_url('privacy') ?>">Privacy</a>
         </div>
         <div>
-            <a href="<?= base_url('contact') ?>">contact</a>
+            <a href="<?= base_url('manage/contact') ?>">contact</a>
         </div>
     </div>
     
