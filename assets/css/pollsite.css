@@ -14,6 +14,7 @@
   --p_18px:18px;
   --p_15px:15px;
   --font_roboto:'roboto';
+  --dark_color:#1c3c6c;
   --font_inter:'inter';
 }
 
@@ -416,6 +417,10 @@
               text-decoration: none;
               color: black;
             }
+            .col-md-4 a:hover {
+              text-decoration: none;
+              color: black;
+            }
             #main #faq .card .card-header .btn-header-link {
               color:var(--white_color);
               display: block;
@@ -788,4 +793,24 @@ input:checked + .slider:before {
 .a{
 text-decoration: none;
 font-size: 1.5rem;
+}
+
+/* footer */
+
+.socialicon a{
+  border-radius: 50%;
+  border-width: 2px;
+}
+.boostrapfacebook{
+  width:45px;
+}
+.emaildiv input{
+  color: var(--white_color)!important;
+}
+.futterdarkcolor{
+  background-color: var(--dark_color)!important;
+}
+.roundedlogo{
+  width: 20%;
+  /* / margin-left: 40%; / */
 }

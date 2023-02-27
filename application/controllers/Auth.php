@@ -55,6 +55,7 @@ class Auth extends CI_Controller {
             $data['name'] = $this->input->post('txtname');
             $data['email'] = $this->input->post('txtemail');
             $data['password'] = md5($this->input->post('txtpassword'));
+            $data['client_ip'] = $this->get_client_ip();
             if($this->db_auth->register($data))
             {
                 $this->session->set_flashdata('error','Registered success');
@@ -79,5 +80,23 @@ class Auth extends CI_Controller {
             $url = $_SERVER['HTTP_REFERER'];
             redirect($url);
         }
+    }
+    public function get_client_ip() {
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+           $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
     }
 }

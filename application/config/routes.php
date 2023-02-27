@@ -51,6 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['poll/(:any)'] = "manage/user_share/$1";
 $route['privacy'] = "manage/privacy";
+$route['terms_condion'] = "manage/terms";
+$route['disclaimer'] = "manage/disclaimer";
+$route['contact_us'] = "manage/contact";
 $route['login'] = "auth/login";
 $route['signup'] = "auth/signup";
 $route['signup'] = "auth/signup";

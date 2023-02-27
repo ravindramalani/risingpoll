@@ -162,6 +162,7 @@ class Manage extends CI_Controller {
             }else{
                 $data['share_msg'] = '{title} {link}';
             }
+            $data['client_ip'] = $this->get_client_ip();
             $res = $this->db_create_poll->db_insert_poll($data);
             if($res){
                 $this->session->set_userdata('user_id', $data['share_id']);

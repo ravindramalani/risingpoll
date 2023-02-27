@@ -25,6 +25,10 @@
   z-index: 2;
   bottom: 0;
 }
+.carousel-item .row .col-md a{
+  text-decoration: none !important;
+  color : black !important;
+}
 .logoname {
   font-family: var(--font_inter);
   font-size: var(--h4_22px);

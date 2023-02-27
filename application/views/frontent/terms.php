@@ -53,7 +53,7 @@ p{
     
     <div class="border w-75 m-auto p-3 ">
     
-        <h1>Terms of and conditions</h1>
+        <h1>Terms and conditions</h1>
     
         <p>Rising Poll is operated by Eniacworld Media Private Limited. We provide this website and all its information, tools, and services to you, the user, subject to your agreement to the terms and conditions outlined in this document.</p>
 

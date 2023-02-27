@@ -60,7 +60,7 @@
                             </label>
                         </div>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" name="one_vote_ip" class="custom-control-input" id="log15">
+                            <input type="checkbox" checked name="one_vote_ip" class="custom-control-input" id="log15">
                             <label class="custom-control-label" for="log15">One vote per IP address
                             </label>
                         </div>
@@ -74,7 +74,7 @@
                             <input type="datetime-local" name="end_date" hidden="true">
                         </div>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" checked name="one_vote_session" class="custom-control-input" id="log12">
+                            <input type="checkbox" name="one_vote_session" class="custom-control-input" id="log12">
                             <label class="custom-control-label" for="log12">One vote one browser session
                             </label>
                         </div>
@@ -120,14 +120,19 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="row">
-                    <?php foreach($top_poll as $value){ $result = json_decode($value['poll'])?>
+                    <?php foreach($top_poll as $value){$date1 =  strtotime($value['date']);$date2 =  strtotime(date("Y-m-d"));$interval = $date2 - $date1; $result = json_decode($value['poll'])?>
                     <div class="col-md-4">
                     <a href="<?php echo base_url('poll/'.$value['share_id']) ?>#create">
-                        <div class="card border-0 w-100">
-                          <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
-                          <div class="card-body">
-                            <h5 class="card-title"><?= $result->title?></h5>
-                          </div>
+                        <div class="card p-3 mb-2">
+                            <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="<?= $result->title?>">
+                            <h3 class="h5 my-2 heading"><?= $result->title?></h3>
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="ms-2 c-details">
+                                        <span class="mr-2"><?= round($interval / (60 * 60 * 24)) ?> days ago</span> <span class="text-secondary"><i class="fa fa-eye" aria-hidden="true"></i> <?= $value['view'] ?> Views</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </a>
                     </div>
@@ -157,14 +162,19 @@
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <div class="row">
-                <?php foreach($recent_poll as $value){ $result = json_decode($value['poll'])?>
+                <?php foreach($recent_poll as $value){ $date1 =  strtotime($value['date']);$date2 =  strtotime(date("Y-m-d"));$interval = $date2 - $date1;$result = json_decode($value['poll'])?>
                     <div class="col-md-4">
                     <a href="<?php echo base_url('poll/'.$value['share_id']) ?>#create">
-                    <div class="card border-0 w-100">
-                          <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="Card image cap">
-                          <div class="card-body">
-                            <h5 class="card-title"><?= $result->title?></h5>
-                          </div>
+                        <div class="card p-3 mb-2">
+                            <img height="183px" class="card-img-top" src="<?php if(isset($result->head_img)){ echo base_url('assets/image_poll/'.$result->head_img); }else{  echo base_url('assets/').'image_share.png'; }?>" alt="<?= $result->title?>">
+                            <h3 class="h5 my-2 heading"><?= $result->title?></h3>
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="ms-2 c-details">
+                                        <span class="mr-2"><?= round($interval / (60 * 60 * 24)) ?> days ago</span> <span class="text-secondary"><i class="fa fa-eye" aria-hidden="true"></i> <?= $value['view'] ?> Views</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </a>
                     </div>
