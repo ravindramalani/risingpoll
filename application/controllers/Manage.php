@@ -8,9 +8,10 @@ class Manage extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('db_create_poll');
+
     }
     
-
+    
     public function index()
     {        
         $data['meta_title'] = 'RisingPoll: Create your poll';
@@ -52,11 +53,22 @@ class Manage extends CI_Controller {
         $this->load->view('frontent/common/header');
         $this->load->view('frontent/contact');
         $this->load->view('frontent/common/footer');
-    }    public function disclaimer(){
+    }
+    
+    public function faq(){
+        $this->load->view('frontent/common/header');
+        $this->load->view('frontent/faq');
+        $this->load->view('frontent/common/footer');
+    }
+
+
+    public function disclaimer(){
         $this->load->view('frontent/common/header');
         $this->load->view('frontent/disclaimer');
         $this->load->view('frontent/common/footer');
-    } 
+    }
+    
+    
     public function create_page(){
         $data['meta_title'] = 'Create a Poll - Free Poll Maker - Risingpoll.com';
         $data['meta'] = '
@@ -80,6 +92,7 @@ class Manage extends CI_Controller {
         $this->load->view('frontent/create_page',$data);	
         $this->load->view('frontent/common/footer');	
     }
+
     public function update($share_id){
         if($this->input->post('name') == 'one_vote_ip'){
             $data['ip'] = $this->input->post('status');
@@ -114,6 +127,7 @@ class Manage extends CI_Controller {
             echo 0;
         }
     }
+
     public function create_page_submit(){
         $this->form_validation->set_rules('title', 'Title', 'required');
         if($this->session->userdata('uid')){
@@ -175,6 +189,7 @@ class Manage extends CI_Controller {
             redirect($url);
         }
     }
+
     public function share_page($share_id){
         if($this->session->userdata('user_id') == $share_id){
             
@@ -214,6 +229,7 @@ class Manage extends CI_Controller {
             redirect(base_url('poll/'.$share_id));
         }
     }
+    
     public function user_share($share_id){
         if($this->session->userdata('user_id') != $share_id){
             $data['top_poll'] = $this->db_create_poll->top_poll();
@@ -383,6 +399,29 @@ class Manage extends CI_Controller {
         else
             $ipaddress = 'UNKNOWN';
         return $ipaddress;
+    }
+    public function contact_data(){
+        $this->load->model('db_message');
+        $this->form_validation->set_rules('name','Name','required');
+        $this->form_validation->set_rules('email','Email','required|valid_email');
+        $this->form_validation->set_rules('subject','SUBJECT','required');
+        $this->form_validation->set_rules('message','MESSAGE','required');
+
+        if($this->form_validation->run()){
+            
+            
+            $data['contact_name'] = $this->input->post('name');
+            $data['contact_email'] = $this->input->post('email');
+            $data['contact_subject'] = $this->input->post('subject');
+            $data['contact_message'] = $this->input->post('message');
+            $this->db_message->contact_us($data);
+        }
+        else{     
+            $this->contact();      
+        }
+
+
+        
     }
 }
 
