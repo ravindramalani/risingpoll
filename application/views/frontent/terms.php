@@ -55,7 +55,7 @@ p{
     
         <h1>Terms and conditions</h1>
     
-        <p>Rising Poll is operated by Eniacworld Media Private Limited. We provide this website and all its information, tools, and services to you, the user, subject to your agreement to the terms and conditions outlined in this document.</p>
+        <p>We provide this website and all its information, tools, and services to you, the user, subject to your agreement to the terms and conditions outlined in this document.</p>
 
         <p>By visiting Rising Poll and/or using our services, you are engaging in our "Service" and accept these Terms of Use (also known as "Terms of Service" or simply "Terms"). These terms apply to all users of the site, including but not limited to browsers, vendors, customers, merchants, and contributors of content.</p>
 

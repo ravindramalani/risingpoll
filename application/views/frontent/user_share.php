@@ -164,6 +164,20 @@ $msg =  $msg;
                 <img class="w-100" style="height : 181px" src="<?= base_url('assets/image_poll/'.$poll->head_img) ?>" alt="">
             </div>
             <?php endif;?>
+            <!-- <div style="width:320px;height:50px" class="advertisment m-auto bg-secondary text-white text-center"> -->
+                    <!-- <p>Advertisment</p> -->
+                    <!-- <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+                    <div id="RisingPoll_banner">
+                    <script>
+                        window.googletag = window.googletag || {cmd: []};
+                        googletag.cmd.push(function() {
+                        googletag.defineSlot('/22677928750/RisingPoll_banner', [[300, 50], [320, 50], [300, 50], [320, 50]], 'RisingPoll_banner').addService(googletag.pubads());
+                        googletag.enableServices();
+                        googletag.display('RisingPoll_banner');
+                        });
+                    </script>
+                    </div>
+            </div> -->
             <div class="text-center px-2 py-3">
                  <span class="head-share"><?php echo $poll->title ?></span>
             </div>

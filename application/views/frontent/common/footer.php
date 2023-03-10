@@ -89,7 +89,7 @@
 
           <!--Grid column-->
           <div class="col-md-6">
-            <img class="roundedlogo" src="./assets/rising.png" alt="">
+            <img class="roundedlogo" src="<?= base_url('assets/rising.png?v=1') ?>" alt="">
           </div>
           <!--Grid column-->
   

@@ -22,29 +22,31 @@ class Db_create_poll extends CI_Model
         }
         return $this->db->where('share_id',$share_id)->get('poll_table')->row_array();  
     }
+    public function check_ip($ip,$share_id){
+        if($this->db->where('share_id',$share_id)->where('ip_address',$ip)->get('ip_address_tbl')->row_array()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public function update_poll($share_id,$op,$data,$ip=null,$name=null){
         $status = 0;
         if($ip){
-            if($this->db->where('share_id',$share_id)->where('ip_address',$ip)->get('ip_address_tbl')->row_array())
+            if($name){
+                $this->db->query("UPDATE poll_table SET  poll = '$data' WHERE share_id = '$share_id'");
+                $info = array('share_id'=>$share_id , 'ip_address' => $ip,'name' => $name,'selected_option' => $op);
+                $this->db->insert('ip_address_tbl', $info);
+            }else{ 
+                $this->db->query("UPDATE poll_table SET  poll = '$data' WHERE share_id = '$share_id'");
+                $info = array('share_id'=>$share_id , 'ip_address' => $ip);
+                $this->db->insert('ip_address_tbl', $info);
+            }
+            if($this->db->affected_rows())
             {
-                $status = 2;
-            }else{
-                if($name){
-                    $this->db->query("UPDATE poll_table SET  poll = '$data' WHERE share_id = '$share_id'");
-                    $info = array('share_id'=>$share_id , 'ip_address' => $ip,'name' => $name,'selected_option' => $op);
-                    $this->db->insert('ip_address_tbl', $info);
-                }else{ 
-                    $this->db->query("UPDATE poll_table SET  poll = '$data' WHERE share_id = '$share_id'");
-                    $info = array('share_id'=>$share_id , 'ip_address' => $ip);
-                    $this->db->insert('ip_address_tbl', $info);
-                }
-                if($this->db->affected_rows())
-                {
-                    $status = 1;
+                $status = 1;
 
-                }else{
-                    $status = 0;
-                }
+            }else{
+                $status = 0;
             }
         }
         else{

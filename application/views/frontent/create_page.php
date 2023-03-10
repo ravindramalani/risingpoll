@@ -74,7 +74,7 @@
                             <input type="datetime-local" name="end_date" hidden="true">
                         </div>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" name="one_vote_session" class="custom-control-input" id="log12">
+                            <input type="checkbox" checked name="one_vote_session" class="custom-control-input" id="log12">
                             <label class="custom-control-label" for="log12">One vote one browser session
                             </label>
                         </div>

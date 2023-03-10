@@ -331,35 +331,50 @@ class Manage extends CI_Controller {
     public function response($share_id){
    
     $poll = $this->db_create_poll->fetch_poll($share_id,false);
+
+
     if($this->session->userdata('session') != $share_id || $poll['session'] != 'on'){
+        // check ip
+        
+        $status_ip = false;
         if($poll['ip'] == 'on'){
             $ip = $this->get_client_ip();
+            $ip_res = $this->db_create_poll->check_ip($ip,$share_id);
+            if($ip_res){
+                $status_ip = true;
+            }
         }else{
             $ip = $poll['ip'];
         }
-        $name = $poll['name'];
-        $op = $this->input->post('option');
-        if($poll['name'] == 'on'){
-            $name = htmlspecialchars($this->input->post('name'));
-        }
-        if($op != 'undefined'){
-            $poll_data = json_decode($this->db_create_poll->fetch_poll($share_id,false)['poll']);
-            $poll_data->option->$op->option_count +=1;
-            $updated_poll = json_encode($poll_data,JSON_UNESCAPED_UNICODE) ;
-            $res = $this->db_create_poll->update_poll($share_id,$op,$updated_poll,$ip,$name);
-            if($res == 1){
-                    $res = array('msg' => '<p class="text-success text-center">Voted</p>');
-                    $this->session->set_userdata('vote',true);
-                    if($poll['session'] == 'on'){
-                        $this->session->set_userdata('session', $share_id);
-                    }
-            }elseif($res == 2){
-                    $res = array('msg' => '<p class="text-danger text-center">You (or someone in your Wi-Fi/network) have voted on this poll.</p>');
+
+        // end ip
+
+
+        if(!$status_ip){
+            $name = $poll['name'];
+            $op = $this->input->post('option');
+            if($poll['name'] == 'on'){
+                $name = htmlspecialchars($this->input->post('name'));
+            }
+            if($op != 'undefined'){
+                $poll_data = json_decode($this->db_create_poll->fetch_poll($share_id,false)['poll']);
+                $poll_data->option->$op->option_count +=1;
+                $updated_poll = json_encode($poll_data,JSON_UNESCAPED_UNICODE) ;
+                $res = $this->db_create_poll->update_poll($share_id,$op,$updated_poll,$ip,$name);
+                if($res == 1){
+                        $res = array('msg' => '<p class="text-success text-center">Voted</p>');
+                        $this->session->set_userdata('vote',true);
+                        if($poll['session'] == 'on'){
+                            $this->session->set_userdata('session', $share_id);
+                        }
+                }else{
+                        $res = array('msg' => '<p class="text-danger text-center">Error</p>');
+                }
             }else{
-                    $res = array('msg' => '<p class="text-danger text-center">Error</p>');
+                    $res = array('msg' => '<p class="text-warning text-center">Please select a option</p>');
             }
         }else{
-                $res = array('msg' => '<p class="text-warning text-center">Please select a option</p>');
+            $res = array('msg' => '<p class="text-danger text-center">You (or someone in your Wi-Fi/network) have voted on this poll.</p>');
         }
     }else{
         $res = array('msg' => '<p class="text-danger text-center">Already Voted</p>');
