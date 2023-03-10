@@ -102,14 +102,14 @@
         </div>
       </div>
     </div>
-    <div class="path text-center">
+    <div class="path text-center ">
       <img class="w-25" src="<?= base_url() ?>assets/image_3.svg" />
     </div>
     <!-- end 1 -->
 
     <div class="container">
       <div class="row">
-        <div class="col-md-6 text-center disnn">
+        <div class="col-md-6 text-center disnn hide-m">
           <img class="w-75" src="<?= base_url() ?>assets/Group_2.svg" />
         </div>
         <div class="col-md-6">

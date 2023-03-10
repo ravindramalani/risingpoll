@@ -45,7 +45,7 @@
           <div class="row d-flex justify-content-center">
             <!--Grid column-->
             <div class="col-auto">
-              <p class="pt-2">
+              <p class="pt-2 margin0">
                 <strong>Sign up for our newsletter</strong>
               </p>
             </div>
@@ -76,7 +76,7 @@
   
       <!-- Section: Text -->
       <section class="mb-4">
-        <p>
+        <p class="margin0">
         Gather opinions and insights with Rising Poll - the user-friendly platform for creating and participating in engaging polls. Join us today to start polling!
         </p>
       </section>
@@ -97,7 +97,7 @@
           <div class="col-md-6">
             <!-- <h5 class="text-uppercase">Links</h5> -->
   
-            <ul class="list-unstyled mb-0 d-inline text-left">
+            <ul class="list-unstyled futternavi mb-0 d-inline text-left">
               <li>
                 <a href="<?= base_url('privacy') ?>" class="text-white">Privacy Policy</a>
               </li>

@@ -10,6 +10,7 @@
                     <p class="text-danger"><?= $this->session->flashdata('msg'); ?></p>
                 </div>
                 <?php endif; ?>
+
                 <label class="title">Title</label>
                 <div class="tdiv">
                     <input type="text" name="title" placeholder="Type your question here..." class="form-control shadow-none">
