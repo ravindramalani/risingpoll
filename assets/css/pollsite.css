@@ -547,6 +547,11 @@
   }
   .srvdiv form{
       width: 98% !important;
+      
+  }
+
+  .reportbtn{
+    margin: 10px;
   }
   
 }
@@ -558,10 +563,9 @@
 
 }
 .srvdiv form{
-  width: 50%;
+  width: 50%; 
   border-radius: 4px;
-  border: 4px solid var(--hover_color);    
-  padding: 8px;
+  border: 4px solid var(--hover_color); 
   margin: auto;
 }
 .qdiv{
@@ -814,3 +818,71 @@ font-size: 1.5rem;
   width: 20%;
   /* / margin-left: 40%; / */
 }
+.futternavi li{
+  margin-left: 25%;
+}
+.margin0{
+  margin: 0px!important;
+}
+
+
+
+/* ------------------------------------Report Button------------------------------------ */
+
+
+
+
+.reportdiv{
+  padding: 20px;
+}
+.reporthdng label{
+  color: var(--black_color);
+  font-family: var(--font_roboto);
+  font-size: var(--p_15px);
+  margin-left: 10px;
+}
+.reporthdng input{
+  accent-color: var(--main_color);
+}
+.innerreportbtn{
+  background-color: var(--main_color);
+  color: var(--white_color);
+  font-family: var(--font_roboto);
+  font-size: var(--h4_18px);
+  margin: 5px 0px;
+  border:none;
+  width: 50%;
+  margin: auto;
+}
+.reportmainhdng{
+  color: var(--main_color);
+  font-weight: bold;
+  font-family: var(--font_roboto);
+  font-size: var(--h4_22px);
+}
+
+
+/* Creat Poll Div */
+
+.creatpollnavbar{
+  background-color: var(--main_color);
+  width: 100%;
+}
+.creatpollnavbar li{
+  list-style: none;
+  display: inline;
+  padding: 0px 5px;
+  
+}
+.creatpollnavbar a{
+  color: var(--white_color);
+  font-family: var(--font_roboto);
+  font-size: var(--p_15px);
+  background-color: var(--main_color);
+  border: none;
+}
+.creatpollnavbar a:hover{
+  color: var(--main_color);
+  text-decoration: none;
+}
+
