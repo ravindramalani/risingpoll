@@ -255,7 +255,7 @@ $msg =  $msg;
 
 
                     <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger py-3 px-5 reportbtn" data-toggle="modal" data-target="#exampleModal">
+        <button id="report_modal" type="button" identity="<?= $poll_data['share_id'] ?>" class="btn btn-danger py-3 px-5 reportbtn" data-toggle="modal" data-target="#exampleModal">
         Report
         </button>
 
@@ -269,22 +269,8 @@ $msg =  $msg;
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body text-left" >
-                <div class="reporthdng"><input type="radio" value="1" name="report" ><label> Sexual content </label></div>
-                <div class="reporthdng"><input type="radio" value="2" name="report" ><label> Violent or repulsive content </label></div>
-                <div class="reporthdng"><input type="radio" value="3" name="report" ><label> Hateful or abusive content </label></div>
-                <div class="reporthdng"><input type="radio" value="4" name="report" ><label> Harassment or bullying </label></div>
-                <div class="reporthdng"><input type="radio" value="5" name="report" ><label> Harmful or dangerous acts </label></div>
-                <div class="reporthdng"><input type="radio" value="6" name="report" ><label> Misinformation </label></div>
-                <div class="reporthdng"><input type="radio" value="7" name="report" ><label> Child abuse </label></div>
-                <div class="reporthdng"><input type="radio" value="8" name="report" ><label> Promotes terrorism </label></div>
-                <div class="reporthdng"><input type="radio" value="9" name="report" ><label> Spam or misleading </label></div>
-                <div class="reporthdng"><input type="radio" value="10" name="report" ><label> Infringes my rights </label></div>
-                <div class="reporthdng"><input type="radio" value="11" name="report" ><label> Captions issue </label></div>
-                <div class="reporthdng"><input type="radio" value="12" name="report" ><label> None of these are my issue </label></div>
-            </div>
-            <div class="modal-footer">
-                <button id="report_poll" type="button" class="btn btn-danger">Submit</button>
+            <div id="report_body">
+
             </div>
             </div>
         </div>

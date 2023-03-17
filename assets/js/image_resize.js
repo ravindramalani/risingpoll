@@ -20,7 +20,9 @@ function readURL(input) {
  imageInput.addEventListener("change", function() {
    // Get the selected file
    var file = imageInput.files[0];
+   const fileSize = file.size;
    if (checkImageFormat(file)) {
+    if(fileSize > 204800){
         // Create a FileReader to read the file
         var reader = new FileReader();
 
@@ -36,7 +38,7 @@ function readURL(input) {
         var canvas = document.createElement("canvas");
 
         // Set the canvas dimensions to the desired size
-        var width = 200; // set the desired width
+        var width = 500; // set the desired width
         var height = img.height * (width / img.width); // calculate the proportional height
         canvas.width = width;
         canvas.height = height;
@@ -57,6 +59,15 @@ function readURL(input) {
 
     // Read the file as a data URL
     reader.readAsDataURL(file);
+    }else{
+        const reader = new FileReader();
+        reader.onload = function() {
+            const base64String = reader.result.split(',')[1]; // get the base64-encoded string
+            imagePreview = `data:image/jpeg;base64,${base64String}`; 
+            hiddeninput.value = imagePreview; // do something with the base64-encoded string
+        };
+        reader.readAsDataURL(file);
+    }
     $('.preview').html('<img id="blah" height="183px" width="100%" src="#" alt="your image" />');
     readURL(this);
     }else{

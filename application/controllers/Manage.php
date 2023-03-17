@@ -448,8 +448,49 @@ class Manage extends CI_Controller {
        }
        
     }
-    public function report_poll(){
-        print_r(json_encode($_POST));
+    public function report_poll($share_id){
+        $data['report_id'] = $this->input->post('option');
+        $data['share_id'] = $share_id;
+        $data['ip'] = $this->get_client_ip();
+        if($this->session->userdata('uid')){
+            $data['uid'] = $this->session->userdata('uid');
+        }
+        $this->load->model('db_message');
+        if($this->db_message->report_poll($data)){
+            $data['report'] = '<p class="py-3 px-2 text-center text-success">Thank you for reporting this poll. We take reports seriously and will investigate the issue as soon as possible. If we find that this poll violates our terms of service, we will take appropriate action to remove it. We appreciate your help in keeping our community safe and respectful</p>';
+        }else{
+            $data['report'] = '<p class="py-3 px-2 text-center text-danger">We are facing some issue while reporting.</p>';
+
+        }
+        echo json_encode($data);
+    }
+    public function reports($share_id){
+        $temp['share_id'] = $share_id;
+        $temp['ip'] = $this->get_client_ip();
+        $this->load->model('db_message');
+        if(!$this->db_message->check_report_poll($temp)){
+            $data['report'] = '<div class="modal-body text-left" >
+            <div class="reporthdng"><input type="radio" value="1" name="report" ><label> Sexual content </label></div>
+            <div class="reporthdng"><input type="radio" value="2" name="report" ><label> Violent or repulsive content </label></div>
+            <div class="reporthdng"><input type="radio" value="3" name="report" ><label> Hateful or abusive content </label></div>
+            <div class="reporthdng"><input type="radio" value="4" name="report" ><label> Harassment or bullying </label></div>
+            <div class="reporthdng"><input type="radio" value="5" name="report" ><label> Harmful or dangerous acts </label></div>
+            <div class="reporthdng"><input type="radio" value="6" name="report" ><label> Misinformation </label></div>
+            <div class="reporthdng"><input type="radio" value="7" name="report" ><label> Child abuse </label></div>
+            <div class="reporthdng"><input type="radio" value="8" name="report" ><label> Promotes terrorism </label></div>
+            <div class="reporthdng"><input type="radio" value="9" name="report" ><label> Spam or misleading </label></div>
+            <div class="reporthdng"><input type="radio" value="10" name="report" ><label> Infringes my rights </label></div>
+            <div class="reporthdng"><input type="radio" value="11" name="report" ><label> Captions issue </label></div>
+            <div class="reporthdng"><input type="radio" value="12" name="report" ><label> None of these are my issue </label></div>
+        </div>
+        <div class="modal-footer">
+            <button id="report_poll" onclick="report_poll()" type="button" class="btn btn-danger">Submit</button>
+        </div>';
+        }else{
+            $data['report'] = '<p class="py-3 text-center text-success">Thank you for reporting this poll. We have already received a report for this poll and are investigating the issue. We appreciate your concern and are working to resolve the issue as soon as possible. If you have any additional information to share, please <a href="'.base_url('contact_us').'">Contact us</a>. Thank you for helping us keep our community safe and respectful.</p>';
+        }
+        
+    echo json_encode($data);
     }
 }
 

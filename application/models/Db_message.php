@@ -16,6 +16,18 @@ class Db_message extends CI_Model {
             return false;
         }
     }
+    public function report_poll($data){
+        $this->db->insert('poll_reports', $data);
+        if($this->db->insert_id()){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+    public function check_report_poll($data){
+        return $this->db->where($data)->get('poll_reports')->result_array();
+    }
 
 
 
