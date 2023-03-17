@@ -201,6 +201,6 @@ $('#log11').change(function() {
     $("#end_date").toggle("false");
 })
 </script>
-<script src="<?= base_url('assets/js/image_resize.js') ?>"></script>
+<script src="<?= base_url('assets/js/image_resize.js?v='.rand()) ?>"></script>
 
 

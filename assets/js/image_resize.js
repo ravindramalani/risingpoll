@@ -36,7 +36,7 @@ function readURL(input) {
         var canvas = document.createElement("canvas");
 
         // Set the canvas dimensions to the desired size
-        var width = 500; // set the desired width
+        var width = 200; // set the desired width
         var height = img.height * (width / img.width); // calculate the proportional height
         canvas.width = width;
         canvas.height = height;
