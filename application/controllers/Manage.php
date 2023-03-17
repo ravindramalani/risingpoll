@@ -8,7 +8,6 @@ class Manage extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('db_create_poll');
-
     }
     
     public function index()
@@ -420,25 +419,34 @@ class Manage extends CI_Controller {
             $ipaddress = 'UNKNOWN';
         return $ipaddress;
     }
-    public function contact_data(){
-        $this->load->model('db_message');
-        $this->form_validation->set_rules('name','Name','required');
-        $this->form_validation->set_rules('email','Email','required|valid_email');
-        $this->form_validation->set_rules('subject','SUBJECT','required');
-        $this->form_validation->set_rules('message','MESSAGE','required');
+    public function contact_support(){
+       $this->form_validation->set_rules('email', 'email', 'trim|required');
+       $this->form_validation->set_rules('message', 'message', 'required');
+       $this->form_validation->set_rules('subject', 'subject', 'required');
+       $this->form_validation->set_rules('name', 'name', 'required');
+       
+       if ($this->form_validation->run() == TRUE) {
+            $data['contact_email'] = htmlspecialchars($this->input->post('email'));
+            $data['contact_message'] = htmlspecialchars($this->input->post('message'));
+            $data['contact_subject'] = htmlspecialchars($this->input->post('subject'));
+            $data['contact_name'] = htmlspecialchars($this->input->post('name'));
+            $this->load->model('db_message');
+            if($this->db_message->contact_us($data)){
+                $this->session->set_flashdata('contact_msg','<p class="text-success">Thank you for your message! We will get back to you as soon as possible</p>');
+                $url = $_SERVER['HTTP_REFERER'];
+                redirect($url);
+            }else{
+                $this->session->set_flashdata('contact_msg','<p class="text-danger">Unable to submit your request. We will resolve this issue as soon as possible</p>');
+                $url = $_SERVER['HTTP_REFERER'];
+                redirect($url);
+            }
 
-        if($this->form_validation->run()){
-            
-            
-            $data['contact_name'] = $this->input->post('name');
-            $data['contact_email'] = $this->input->post('email');
-            $data['contact_subject'] = $this->input->post('subject');
-            $data['contact_message'] = $this->input->post('message');
-            $this->db_message->contact_us($data);
-        }
-        else{     
-            $this->contact();      
-        }
+       } else {
+            $this->session->set_flashdata('contact_field_message','Fields are empty');
+            $url = $_SERVER['HTTP_REFERER'];
+            redirect($url);
+       }
+       
     }
     public function report_poll(){
         print_r(json_encode($_POST));

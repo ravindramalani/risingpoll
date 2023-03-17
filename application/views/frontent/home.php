@@ -10,6 +10,43 @@
       border-bottom: 39px solid transparent;
       border-left: 40px solid #1f5ab2;
     }
+    .modal {
+      display: block; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
 </style>
     <div class="container">
       <div class="row">
@@ -438,14 +475,26 @@
               </p>
             </div>
             <div class="col-md-7 condiv">
-              <form class="formdiv">
+              <form method="post" action="<?= base_url('manage/contact_support'); ?>" class="formdiv">
                 <label class="formhdng">Enter your details to contact</label>
+                <?php if($this->session->flashdata('contact_field_message')):?>
+                <div class="text-center">
+                    <p class="text-danger"><?= $this->session->flashdata('contact_field_message'); ?></p>
+                </div>
+                <?php endif; ?>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    placeholder="Enter your Full Name"
+                  />
+                </div>
                 <div class="form-group">
                   <input
                     type="email"
                     class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
+                    name="email"
                     placeholder="Enter your email address"
                   />
                 </div>
@@ -453,22 +502,14 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="exampleInputPassword1"
-                    placeholder="Enter your Full Name"
-                  />
-                </div>
-                <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleInputPassword1"
+                    name="subject"
                     placeholder="Enter Subjet"
                   />
                 </div>
                 <div class="form-group">
                   <textarea
                     class="form-control"
-                    id="exampleFormControlTextarea1"
+                    name="message"
                     rows="3"
                     placeholder="Write your message"
                   ></textarea>
@@ -480,5 +521,21 @@
         </div>
       </div>
     </div>
+    <?php if($this->session->flashdata('contact_msg')):?>
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content text-center">
+          <p><?= $this->session->flashdata('contact_msg') ?></p>
+          <a class="close_btn btn btn-primary m-auto w-25">Close</a>
+        </div>
 
+        </div>
+        <script>
+          var span = document.getElementsByClassName("close_btn")[0];
+          var modal = document.getElementById("myModal");
+          span.onclick = function() {
+          modal.style.display = "none";
+        }
+        </script>
+    <?php endif; ?>
     <!-- -------------------------------Futtter Div----------------------------------->
