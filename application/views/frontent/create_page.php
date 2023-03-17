@@ -15,6 +15,7 @@
                 <div class="tdiv">
                     <input type="text" name="title" placeholder="Type your question here..." class="form-control shadow-none">
                     <input id="head_img" class="d-none" type="file" name="head_img">
+                    <input id="hiddeninput" type="hidden" name="image_resize">
                     <button id="upload_head" type="button" class="absolute imgicon">
                         <i class="fa fa-image"></i>
                     </button>
@@ -193,24 +194,6 @@
           </div>
     </div>
 <script>
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-$("#head_img").change(function(){
-    $('.preview').html('<img id="blah" height="183px" width="100%" src="#" alt="your image" />');
-    readURL(this);
-});
-</script>
-<script>
 $('#customSwitches0').change(function() {
     $("#customs_share").toggle("false");
 })
@@ -218,5 +201,6 @@ $('#log11').change(function() {
     $("#end_date").toggle("false");
 })
 </script>
+<script src="<?= base_url('assets/js/image_resize.js') ?>"></script>
 
 

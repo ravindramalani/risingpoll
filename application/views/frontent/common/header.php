@@ -28,6 +28,7 @@ $title = $poll->title;
     <meta property="og:title" content="<?= $title; ?>" />
     <meta property="og:url" content="<?= $url; ?>" />
     <meta property="og:image" content="<?= $og_img; ?>" />
+    <meta name="site_url" content="<?= base_url(); ?>">
     <!-- Css -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/pollsite.css?v=<?php echo rand(); ?>">
     <!-- Bootstrap CSS -->

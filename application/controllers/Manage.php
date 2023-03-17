@@ -11,7 +11,6 @@ class Manage extends CI_Controller {
 
     }
     
-    
     public function index()
     {        
         $data['meta_title'] = 'RisingPoll: Create your poll';
@@ -139,8 +138,15 @@ class Manage extends CI_Controller {
         $op2 = $this->input->post('option')[1];
         if($this->form_validation->run() && $op1 && $op2){ 
             $poll['title'] = htmlspecialchars($this->input->post('title'));  
-            if($_FILES['head_img']['name']){
-                $poll['head_img'] = $this->image_upload('head_img');
+            if($_POST['image_resize']){
+                $get_image_status = $this->image_upload($this->input->post('image_resize'));
+                if($get_image_status){
+                    $poll['head_img'] = $get_image_status;
+                }else{
+                    $this->session->set_flashdata('msg','Image Format Not Supported');
+                    $url = $_SERVER['HTTP_REFERER'];
+                    redirect($url);
+                }
             }
             $i=0;
             foreach ($this->input->post('option') as $value) {
@@ -382,20 +388,19 @@ class Manage extends CI_Controller {
         echo json_encode($res);
     }
     public function image_upload($name){
-        $configUpload['upload_path']    = './assets/image_poll';                  #the folder placed in the root of project
-        $configUpload['allowed_types']  = 'gif|jpg|png|bmp|jpeg';       #allowed types description
-        $configUpload['encrypt_name']   = true;                         #encrypt name of the uploaded file
-        $this->load->library('upload', $configUpload);                  #init the upload class
-        if(!$this->upload->do_upload('head_img'))
-        {
-            $uploadedDetails = $this->upload->display_errors();
+        if($name) {
+            $img_name = time().rand();
+            $image_data = imagecreatefrompng($name);
+            if(imagepng($image_data, './assets/image_poll/'.$img_name.'.png')){
+                imagedestroy($image_data);
+                return $img_name.'.png';
+            }else{
+                return false;
+            }
+        }else{
+            return false;
         }
-        else
-        {
-            $uploadedDetails  = $this->upload->data();              
-        }           
-        return $uploadedDetails['file_name']; 
-
+  
     }
     public function get_client_ip() {
         $ipaddress = '';
@@ -434,9 +439,9 @@ class Manage extends CI_Controller {
         else{     
             $this->contact();      
         }
-
-
-        
+    }
+    public function report_poll(){
+        print_r(json_encode($_POST));
     }
 }
 

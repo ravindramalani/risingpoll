@@ -270,67 +270,25 @@ $msg =  $msg;
                 </button>
             </div>
             <div class="modal-body text-left" >
-            
-            <div class="reporthdng"><input type="radio" id="1" name="report" ><label> Sexual content </label></div>
-            <div class="reporthdng"><input type="radio" id="2" name="report" ><label> Violent or repulsive content </label></div>
-            <div class="reporthdng"><input type="radio" id="3" name="report" ><label> Hateful or abusive content </label></div>
-            <div class="reporthdng"><input type="radio" id="4" name="report" ><label> Harassment or bullying </label></div>
-            <div class="reporthdng"><input type="radio" id="5" name="report" ><label> Harmful or dangerous acts </label></div>
-            <div class="reporthdng"><input type="radio" id="6" name="report" ><label> Misinformation </label></div>
-            <div class="reporthdng"><input type="radio" id="7" name="report" ><label> Child abuse </label></div>
-            <div class="reporthdng"><input type="radio" id="8" name="report" ><label> Promotes terrorism </label></div>
-            <div class="reporthdng"><input type="radio" id="9" name="report" ><label> Spam or misleading </label></div>
-            <div class="reporthdng"><input type="radio" id="10" name="report" ><label> Infringes my rights </label></div>
-            <div class="reporthdng"><input type="radio" id="11" name="report" ><label> Captions issue </label></div>
-            <div class="reporthdng"><input type="radio" id="12" name="report" ><label> None of these are my issue </label></div>
+                <div class="reporthdng"><input type="radio" value="1" name="report" ><label> Sexual content </label></div>
+                <div class="reporthdng"><input type="radio" value="2" name="report" ><label> Violent or repulsive content </label></div>
+                <div class="reporthdng"><input type="radio" value="3" name="report" ><label> Hateful or abusive content </label></div>
+                <div class="reporthdng"><input type="radio" value="4" name="report" ><label> Harassment or bullying </label></div>
+                <div class="reporthdng"><input type="radio" value="5" name="report" ><label> Harmful or dangerous acts </label></div>
+                <div class="reporthdng"><input type="radio" value="6" name="report" ><label> Misinformation </label></div>
+                <div class="reporthdng"><input type="radio" value="7" name="report" ><label> Child abuse </label></div>
+                <div class="reporthdng"><input type="radio" value="8" name="report" ><label> Promotes terrorism </label></div>
+                <div class="reporthdng"><input type="radio" value="9" name="report" ><label> Spam or misleading </label></div>
+                <div class="reporthdng"><input type="radio" value="10" name="report" ><label> Infringes my rights </label></div>
+                <div class="reporthdng"><input type="radio" value="11" name="report" ><label> Captions issue </label></div>
+                <div class="reporthdng"><input type="radio" value="12" name="report" ><label> None of these are my issue </label></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger">Send</button>
+                <button id="report_poll" type="button" class="btn btn-danger">Submit</button>
             </div>
             </div>
         </div>
         </div>
-
-
-        <!-- Small modal -->
-<!-- <button type="button" class="btn btn-danger py-3 px-5" data-toggle="modal" data-target=".bd-example-modal-sm">Report</button>
-
-<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-sm">
-    <div class="modal-content reportdiv text-left">
-
-    <div class="reportmainhdng"><label class="reporthdng">Report Content</label></div>
-    <div class="reporthdng"><input type="radio" id="1" name="report" ><label> Sexual content </label></div>
-    <div class="reporthdng"><input type="radio" id="2" name="report" ><label> Violent or repulsive content </label></div>
-    <div class="reporthdng"><input type="radio" id="3" name="report" ><label> Hateful or abusive content </label></div>
-    <div class="reporthdng"><input type="radio" id="4" name="report" ><label> Harassment or bullying </label></div>
-    <div class="reporthdng"><input type="radio" id="5" name="report" ><label> Harmful or dangerous acts </label></div>
-    <div class="reporthdng"><input type="radio" id="6" name="report" ><label> Misinformation </label></div>
-    <div class="reporthdng"><input type="radio" id="7" name="report" ><label> Child abuse </label></div>
-    <div class="reporthdng"><input type="radio" id="8" name="report" ><label> Promotes terrorism </label></div>
-    <div class="reporthdng"><input type="radio" id="9" name="report" ><label> Spam or misleading </label></div>
-    <div class="reporthdng"><input type="radio" id="10" name="report" ><label> Infringes my rights </label></div>
-    <div class="reporthdng"><input type="radio" id="11" name="report" ><label> Captions issue </label></div>
-    <div class="reporthdng"><input type="radio" id="12" name="report" ><label> None of these are my issue </label></div>
-
-    <button type="button" class="sm-btn innerreportbtn" >Send</button> -->
-    
-    </div>
-</div>
-</div>
-        
-
-        
-
-
-
-
-        
-
-        
-
-        
     </div>
     <div class="container mt-3 py-2">
         <div class="rel d-flex">
@@ -470,6 +428,8 @@ $('#share_custom').on('click', () => {
   }
 });
 </script>
+<script src="<?= base_url('assets/js/report.js?v='.rand()); ?>">
 
+</script>
 
     <!-- -------------------------------Futtter Div----------------------------------->
