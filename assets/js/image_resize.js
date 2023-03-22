@@ -1,77 +1,55 @@
-function checkImageFormat(file) {
-    const acceptedFormats = ["image/jpeg", "image/png"];
-    return acceptedFormats.includes(file.type);
-  }
-function readURL(input) {
-    if (input.files && input.files[0]) {
+function resizeImage(event) {
+    var input = event.target;
+    $('.preview').html('<div class="dot-pulse my-5"></div>');
+    var file = input.files[0];
+    const  fileType = file['type'];
+    const validImageTypes = ['image/jpeg', 'image/png'];
+    if (validImageTypes.includes(fileType)) {
+        var url = document.querySelector('meta[name="site_url"]').content;
         var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-// Get the input element for the image file
- var imageInput = document.getElementById("head_img");
- var hiddeninput = document.getElementById("hiddeninput");
- // Add an event listener to the input element to handle file selection
- imageInput.addEventListener("change", function() {
-   // Get the selected file
-   var file = imageInput.files[0];
-   const fileSize = file.size;
-   if (checkImageFormat(file)) {
-    if(fileSize > 204800){
-        // Create a FileReader to read the file
-        var reader = new FileReader();
-
-        // Set up the FileReader to handle file load
-        reader.onload = function(event) {
-        // Create an image element and set its source to the loaded data URL
-        var img = new Image();
-        img.src = event.target.result;
-
-        // When the image is loaded, resize it and display it
-        img.onload = function() {
-        // Create a canvas element
-        var canvas = document.createElement("canvas");
-
-        // Set the canvas dimensions to the desired size
-        var width = 500; // set the desired width
-        var height = img.height * (width / img.width); // calculate the proportional height
-        canvas.width = width;
-        canvas.height = height;
-
-        // Draw the image onto the canvas at the new size
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, width, height);
-
-        // Get the resized image as a data URL
-        var dataURL = canvas.toDataURL();
-
-        // Update the input element's value to the resized image data URL
-        console.log(dataURL);
-        hiddeninput.value = dataURL;
-        
-        };
-    };
-
-    // Read the file as a data URL
-    reader.readAsDataURL(file);
-    }else{
-        const reader = new FileReader();
         reader.onload = function() {
-            const base64String = reader.result.split(',')[1]; // get the base64-encoded string
-            imagePreview = `data:image/jpeg;base64,${base64String}`; 
-            hiddeninput.value = imagePreview; // do something with the base64-encoded string
+        var image = new Image();
+        image.onload = function() {
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            var maxWidth = 1200;
+            var maxHeight = 800;
+            var width = image.width;
+            var height = image.height;
+            if (width > maxWidth) {
+            height *= maxWidth / width;
+            width = maxWidth;
+            }
+            if (height > maxHeight) {
+            width *= maxHeight / height;
+            height = maxHeight;
+            }
+            canvas.width = width;
+            canvas.height = height;
+            ctx.drawImage(image, 0, 0, width, height);
+            var dataUrl = canvas.toDataURL(file.type);
+            var formData = new FormData();
+            formData.append('image', dataUrl);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url+'manage/image_upload');
+            xhr.onload = function() {
+                var response =  JSON.parse(xhr.responseText);
+                if(response.status){
+                    document.querySelector('#hiddeninput').value = response.msg;
+                    document.querySelector('.preview').innerHTML = '<img width="100%" src="'+dataUrl+'">';
+                }else{
+                    document.querySelector('.preview').innerHTML = response.msg
+                }
+            };
+            xhr.onerror = function() {
+                document.querySelector('.preview').innerHTML = '<p class="text-center text-danger">Error</p>';
+            };
+            xhr.send(formData);
+        };
+        image.src = reader.result;
         };
         reader.readAsDataURL(file);
-    }
-    $('.preview').html('<img id="blah" height="183px" width="100%" src="#" alt="your image" />');
-    readURL(this);
     }else{
-        alert('not valid image');
+        document.querySelector('.preview').innerHTML = '<p class="text-center text-danger">Wrong image format</p>';
     }
-
- });
+  }

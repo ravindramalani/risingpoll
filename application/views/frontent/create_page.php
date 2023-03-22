@@ -14,13 +14,13 @@
                 <label class="title">Title</label>
                 <div class="tdiv">
                     <input type="text" name="title" placeholder="Type your question here..." class="form-control shadow-none">
-                    <input id="head_img" class="d-none" type="file" name="head_img">
+                    <input onchange="resizeImage(event)" id="head_img" class="d-none" type="file" name="head_img">
                     <input id="hiddeninput" type="hidden" name="image_resize">
                     <button id="upload_head" type="button" class="absolute imgicon">
                         <i class="fa fa-image"></i>
                     </button>
                 </div>
-                <div class="preview py-2">
+                <div class="preview text-center py-2">
                     
                 </div>
                 <div class="chosediv">
