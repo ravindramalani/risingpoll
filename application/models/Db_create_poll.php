@@ -96,6 +96,18 @@ class Db_create_poll extends CI_Model
             return false;
         }
     }
+    public function delete_poll_user_side($share_id){
+        $this->db->trans_start();
+        $this->db->where(array('share_id'=>$share_id))->delete('poll_table');
+        $this->db->where(array('share_id'=>$share_id))->delete('ip_address_tbl');
+        $this->db->where(array('share_id'=>$share_id))->delete('view_count');
+        $this->db->trans_complete();
+        if($this->db->trans_status()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public function fetch_names($share_id){
         return $this->db->where('selected_option is NOT NULL', NULL, FALSE)->where('share_id',$share_id)->get('ip_address_tbl')->result_array();
     }

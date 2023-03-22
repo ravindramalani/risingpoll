@@ -33,35 +33,131 @@ class Manage extends CI_Controller {
 		$this->load->view('frontent/common/footer');
     }
     public function privacy(){
-        $this->load->view('frontent/common/header');
+        $data['meta_title'] = 'Privacy Policy | RisingPoll - Data Collection, Usage, and Storage';
+        $data['meta'] = '
+        <meta name="keywords" content="risingpoll,polls,how to create polls online, voting poll onine, how to create risingpoll, create poll on whatsapp, poll maker online,survey maker onine,">
+        <meta name="description" content="Protecting your privacy is important to us. Our privacy policy explains how we collect, store, and use your personal information, as well as your options for controlling your data. We take your privacy seriously and work to ensure that your information is kept secure and confidential. Contact us if you have any questions or concerns about our privacy policy.">
+        <meta name="subject" content="Online voting polls">
+        <meta name="copyright" content="Risingpoll.com">
+        <meta name="language" content="En">
+        <meta name="pagename" content="Privacy Policy | RisingPoll - Data Collection, Usage, and Storage">
+        <meta name="coverage" content="Worldwide">
+        <meta name="distribution" content="Global">
+        <meta name="target" content="all">
+        <meta name="og:type" content="Online voting poll">
+        <meta name="og:site_name" content="RisingPoll">
+        <meta property="og:locale" content="en" />
+        <meta name="og:description" content="Protecting your privacy is important to us. Our privacy policy explains how we collect, store, and use your personal information, as well as your options for controlling your data. We take your privacy seriously and work to ensure that your information is kept secure and confidential. Contact us if you have any questions or concerns about our privacy policy.">
+        ';
+        $this->load->view('frontent/common/header',$data);
         $this->load->view('frontent/privacy');
         $this->load->view('frontent/common/footer');
     }
     public function about(){
-        $this->load->view('frontent/common/header');
+        $data['meta_title'] = 'About Us | RisingPoll - Learn About Our Mission and Values';
+        $data['meta'] = '
+        <meta name="keywords" content="risingpoll,polls,how to create polls online, voting poll onine, how to create risingpoll, create poll on whatsapp, poll maker online,survey maker onine">
+        <meta name="description" content="Learn more about Risingpoll.com and our mission to engage our audience using polls. Discover our values, team, and history, and how we strive to make a positive impact in our community. Get to know us better and join our community today!">
+        <meta name="subject" content="Online voting polls">
+        <meta name="copyright" content="Risingpoll.com">
+        <meta name="language" content="En">
+        <meta name="pagename" content="About Us | RisingPoll - Learn About Our Mission and Values">
+        <meta name="coverage" content="Worldwide">
+        <meta name="distribution" content="Global">
+        <meta name="target" content="all">
+        <meta name="og:type" content="Online voting poll">
+        <meta name="og:site_name" content="RisingPoll">
+        <meta property="og:locale" content="en" />
+        <meta name="og:description" content="Learn more about Risingpoll.com and our mission to engage our audience using polls. Discover our values, team, and history, and how we strive to make a positive impact in our community. Get to know us better and join our community today!">
+        ';
+        $this->load->view('frontent/common/header',$data);
         $this->load->view('frontent/about');
         $this->load->view('frontent/common/footer');
     }
     public function terms(){
-        $this->load->view('frontent/common/header');
+        $data['meta_title'] = 'Terms and Conditions - Risingpoll.com';
+        $data['meta'] = '
+        <meta name="keywords" content="risingpoll,polls,how to create polls online, voting poll onine, how to create risingpoll, create poll on whatsapp, poll maker online,survey maker onine">
+        <meta name="description" content="Before creating polls and sharing your opinions on Risingpoll, its important to read and understand our terms and conditions. This page outlines our guidelines and expectations to ensure a positive and respectful experience for all users.">
+        <meta name="subject" content="Online voting polls">
+        <meta name="copyright" content="Risingpoll.com">
+        <meta name="language" content="En">
+        <meta name="pagename" content="Terms and Conditions - Risingpoll.com">
+        <meta name="coverage" content="Worldwide">
+        <meta name="distribution" content="Global">
+        <meta name="target" content="all">
+        <meta name="og:type" content="Online voting poll">
+        <meta name="og:site_name" content="RisingPoll">
+        <meta property="og:locale" content="en" />
+        <meta name="og:description" content="Before creating polls and sharing your opinions on Risingpoll, its important to read and understand our terms and conditions. This page outlines our guidelines and expectations to ensure a positive and respectful experience for all users.">
+        ';
+        $this->load->view('frontent/common/header',$data);
         $this->load->view('frontent/terms');
         $this->load->view('frontent/common/footer');
     }
     public function contact(){
-        $this->load->view('frontent/common/header');
+        $data['meta_title'] = 'Contact us - Risingpoll.com';
+        $data['meta'] = '
+        <meta name="keywords" content="risingpoll,polls,how to create polls online, voting poll onine, how to create risingpoll, create poll on whatsapp, poll maker online,survey maker onine">
+        <meta name="description" content="Contact the Risingpoll team with any questions, feedback, or concerns you may have. Fill out our contact form or use the provided contact information to get in touch">
+        <meta name="subject" content="Online voting polls">
+        <meta name="copyright" content="Risingpoll.com">
+        <meta name="language" content="En">
+        <meta name="pagename" content="Contact us - Risingpoll.com">
+        <meta name="coverage" content="Worldwide">
+        <meta name="distribution" content="Global">
+        <meta name="target" content="all">
+        <meta name="og:type" content="Online voting poll">
+        <meta name="og:site_name" content="RisingPoll">
+        <meta property="og:locale" content="en" />
+        <meta name="og:description" content="Contact the Risingpoll team with any questions, feedback, or concerns you may have. Fill out our contact form or use the provided contact information to get in touch">
+        ';
+        $this->load->view('frontent/common/header',$data);
         $this->load->view('frontent/contact');
         $this->load->view('frontent/common/footer');
     }
     
     public function faq(){
-        $this->load->view('frontent/common/header');
+        $data['meta_title'] = 'Create a Poll - Free Poll Maker - Risingpoll.com';
+        $data['meta'] = '
+        <meta name="keywords" content="risingpoll,polls,how to create polls online, voting poll onine, how to create risingpoll, create poll on whatsapp, poll maker online,survey maker onine">
+        <meta name="description" content="Create surveys, real-time polls and online voting at no cost with RisingPoll. Creating a poll with us only take few seconds and now you can create polls online without any registration.">
+        <meta name="subject" content="Online voting polls">
+        <meta name="copyright" content="Risingpoll.com">
+        <meta name="language" content="En">
+        <meta name="pagename" content="Create Online Poll - Risingpoll">
+        <meta name="coverage" content="Worldwide">
+        <meta name="distribution" content="Global">
+        <meta name="target" content="all">
+        <meta name="og:type" content="Online voting poll">
+        <meta name="og:site_name" content="RisingPoll">
+        <meta property="og:locale" content="en" />
+        <meta name="og:description" content="Create surveys, real-time polls and online voting at no cost with RisingPoll. Creating a poll with us only take few seconds and now you can create polls online without any registration.">
+        ';
+        $this->load->view('frontent/common/header',$data);
         $this->load->view('frontent/faq');
         $this->load->view('frontent/common/footer');
     }
 
 
     public function disclaimer(){
-        $this->load->view('frontent/common/header');
+        $data['meta_title'] = 'Disclaimer - Risingpoll.com';
+        $data['meta'] = '
+        <meta name="keywords" content="risingpoll,polls,how to create polls online, voting poll onine, how to create risingpoll, create poll on whatsapp, poll maker online,survey maker onine">
+        <meta name="description" content="Our disclaimer page outlines the limitations of liability and disclaimers of warranties for the information provided on RisingPoll. Please read this page carefully before using our website.">
+        <meta name="subject" content="Online voting polls">
+        <meta name="copyright" content="Risingpoll.com">
+        <meta name="language" content="En">
+        <meta name="pagename" content="Disclaimer - Risingpoll.com">
+        <meta name="coverage" content="Worldwide">
+        <meta name="distribution" content="Global">
+        <meta name="target" content="all">
+        <meta name="og:type" content="Online voting poll">
+        <meta name="og:site_name" content="RisingPoll">
+        <meta property="og:locale" content="en" />
+        <meta name="og:description" content="Our disclaimer page outlines the limitations of liability and disclaimers of warranties for the information provided on RisingPoll. Please read this page carefully before using our website.">
+        ';
+        $this->load->view('frontent/common/header',$data);
         $this->load->view('frontent/disclaimer');
         $this->load->view('frontent/common/footer');
     }
@@ -137,15 +233,8 @@ class Manage extends CI_Controller {
         $op2 = $this->input->post('option')[1];
         if($this->form_validation->run() && $op1 && $op2){ 
             $poll['title'] = htmlspecialchars($this->input->post('title'));  
-            if($_POST['image_resize']){
-                $get_image_status = $this->image_upload($this->input->post('image_resize'));
-                if($get_image_status){
-                    $poll['head_img'] = $get_image_status;
-                }else{
-                    $this->session->set_flashdata('msg','Image Format Not Supported');
-                    $url = $_SERVER['HTTP_REFERER'];
-                    redirect($url);
-                }
+            if($_POST['image_resize']) {
+                $poll['head_img'] = $this->input->post('image_resize');
             }
             $i=0;
             foreach ($this->input->post('option') as $value) {
@@ -273,6 +362,15 @@ class Manage extends CI_Controller {
             redirect(base_url('manage/share_page/'.$share_id));
         }
     }
+    public function delete_user_side_poll($share_id)
+    {
+        if($this->session->userdata('user_id') == $share_id){
+            $this->db_create_poll->delete_poll_user_side($share_id);
+            redirect('manage/create_page');
+        }else{
+            show_404();
+        }
+    }
     public function result($share_id){
         $url = $_SERVER['HTTP_REFERER'];
         $pattern = "/user_share/i";
@@ -386,20 +484,25 @@ class Manage extends CI_Controller {
     }
         echo json_encode($res);
     }
-    public function image_upload($name){
-        if($name) {
-            $img_name = time().rand();
-            $image_data = imagecreatefrompng($name);
-            if(imagepng($image_data, './assets/image_poll/'.$img_name.'.png')){
-                imagedestroy($image_data);
-                return $img_name.'.png';
-            }else{
-                return false;
+    public function image_upload(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $dataUrl = $_POST['image'];
+            $uploadDir = './assets/image_poll/';
+            $image_name = uniqid();
+            $uploadPath = $uploadDir . $image_name . '.png'; // Generate a unique filename for the uploaded file
+
+            // Get the image from the data URL and resize it
+            $image = imagecreatefromstring(base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $dataUrl)));
+            $resizedImage = imagescale($image, 350); // Resize the image to a width of 800 pixels
+            imagedestroy($image);
+            // Save the resized image to disk
+            if ($resizedImage !== false && imagepng($resizedImage, $uploadPath , 9)) {
+                imagedestroy($resizedImage);
+                echo json_encode(array('status' => true, "msg" => $image_name.'.png' ));
+            } else {
+                echo json_encode(array('status' => false, "msg" => '<p class="text-center text-danger">Error</p>' ));
             }
-        }else{
-            return false;
         }
-  
     }
     public function get_client_ip() {
         $ipaddress = '';
@@ -438,13 +541,13 @@ class Manage extends CI_Controller {
             }else{
                 $this->session->set_flashdata('contact_msg','<p class="text-danger">Unable to submit your request. We will resolve this issue as soon as possible</p>');
                 $url = $_SERVER['HTTP_REFERER'];
-                redirect($url);
+                redirect($url.'#contact_form');
             }
 
        } else {
             $this->session->set_flashdata('contact_field_message','Fields are empty');
             $url = $_SERVER['HTTP_REFERER'];
-            redirect($url);
+            redirect(substr($url,0,count($url)-2).'#contact_form');
        }
        
     }

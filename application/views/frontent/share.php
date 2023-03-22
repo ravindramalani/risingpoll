@@ -138,6 +138,9 @@ $msg = preg_replace('/{link}/i', base_url('poll/'.$poll_data['share_id']) , $msg
                 <button id="btn" onclick="my()" class="btn btn-primary custom my-3">
                     Copy Url
                 </button>
+                <a id="btn" href="<?= base_url('manage/delete_user_side_poll/'.$poll_data['share_id']) ?>" class="btn btn-danger custom my-3">
+                    Delete
+                </a>
             </div>
             <div class="share-buttons my-2">
                 <a href="whatsapp://send?text=<?= $msg ?>" action="share/whatsapp/share" target="_blank" class="btn w-100 wts btn-primary custom my-2">

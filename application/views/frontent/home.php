@@ -48,7 +48,7 @@
       cursor: pointer;
     }
 </style>
-    <div class="container">
+    <div class="container py-3">
       <div class="row">
         <div class="col-md-5 fronthdng">
           <h1 class="pollhdng">Create Poll and Get Rewarded</h1>
@@ -475,7 +475,7 @@
               </p>
             </div>
             <div class="col-md-7 condiv">
-              <form method="post" action="<?= base_url('manage/contact_support'); ?>" class="formdiv">
+              <form id="contact_form" method="post" action="<?= base_url('manage/contact_support'); ?>" class="formdiv">
                 <label class="formhdng">Enter your details to contact</label>
                 <?php if($this->session->flashdata('contact_field_message')):?>
                 <div class="text-center">
