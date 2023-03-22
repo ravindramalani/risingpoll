@@ -2,7 +2,7 @@
     <div>
         <div class="srvdiv">
 
-            <h1 class="crthdng text-center">Start Creating your poll <span> today </span> ?</h1>
+            <h1 class="crthdng text-center">Start creating your poll <span> today </span> ?</h1>
 
             <form method="post" enctype='multipart/form-data' action="<?php echo base_url('manage/create_page_submit'); ?>" class="form px-4 py-4">
                 <?php if($this->session->flashdata('msg')):?>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="chosediv">
                     <div class="py-3 append_option">
-                        <label class="title">Answer Option</label>
+                        <label class="title">Answer Options</label>
                         <div class="tdiv">
                             <input type="text" name="option[]" placeholder="Option 1" class="form-control shadow-none">
                             <!-- <input class="d-none" type="file" name="img[]"> -->
@@ -53,7 +53,7 @@
 
                     <a class="text-dark font-weight-bold" data-toggle="collapse" href="#collapseExample"
                         aria-expanded="false" aria-controls="collapseExample">
-                        <i class="fa fa-angle-down"></i> Hide Advance Options
+                        <i class="fa fa-angle-down"></i> Show Advance Options
                     </a>
                     <div class="collapse px-4" id="collapseExample">
                         <div class="custom-control custom-switch">
@@ -77,12 +77,12 @@
                         </div>
                         <div class="custom-control custom-switch">
                             <input type="checkbox" checked name="one_vote_session" class="custom-control-input" id="log12">
-                            <label class="custom-control-label" for="log12">One vote one browser session
+                            <label class="custom-control-label" for="log12">One vote per browser session
                             </label>
                         </div>
                         <div class="custom-control custom-switch">
                             <input type="checkbox" name="h_result"  class="custom-control-input" id="customSwitches1">
-                            <label class="custom-control-label" for="customSwitches1">Hide Result
+                            <label class="custom-control-label" for="customSwitches1">Hide Results
                             </label>
                         </div>
                         <div class="custom-control custom-switch">
@@ -97,7 +97,7 @@
                         </div>
                         <div class="custom-share px-3 " id="customs_share">
                             <div class="form-group">
-                                <label class="text-danger" for="">Note : Use {title} for Use Title in sharing and for link {link} </label>
+                                <label class="text-danger" for="">Note : Use {title} for Title in sharing and {link} for link</label>
                                 <textarea class="form-control"  name="cust_msg" id="" rows="2" placeholder="ex : { title }  {link} ">{title}  {link}</textarea>
                             </div>
                         </div>  

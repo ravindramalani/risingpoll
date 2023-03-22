@@ -51,9 +51,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-5 fronthdng">
-          <h1 class="pollhdng">Create Poll and Get Rewarded</h1>
+          <h1 class="pollhdng">Create Polls on RisingPoll like never before</h1>
           <p class="pollpara">
-            Now get everyone’s opinion faster than ever and get rewarded for it.
+            Now get everyone’s opinion faster than ever by creating a poll only on RisingPoll.
           </p>
           <div class="towbtn txtc mgt30 row">
             <div class="col-md-6">
@@ -111,10 +111,10 @@
       </div>
     </div>
     <div class="container stepdiv">
-      <h1 class="stephdng">Steps to Create Poll</h1>
+      <h1 class="stephdng">How to create a Poll on RisingPoll?</h1>
       <p class="steppara">
         Simplicity is the key feature of RisingPoll, but we also offer advanced 
-		features for users so they can customize polls for different purposes.
+		features for users so they can customized polls for different purposes.
       </p>
     </div>
     <!-- steps part along with ribbon -->
@@ -129,8 +129,8 @@
             <div class="arrow-right my-5"></div>
           </div>
           <p class="arrowpara">
-            You can easily create your own poll on our platform without any 
-			registration. But if you want to change them in the 
+            You can easily create your own poll on RisingPoll without any 
+			registration. But if you want to change them in 
 			future We recommend registering with us.
           </p>
         </div>
@@ -157,10 +157,10 @@
             </div>
           </div>
           <p class="arrowpara">
-            After you've created your poll and shared it with everyone, 
+            After you've created your poll on RisingPoll and shared it with everyone, 
 			you'll need to wait for everyone to respond. If you are a 
 			registered user, you can view the result of your created 
-			poll at any time and otherwise you can view it only on the 
+			polls at any time and otherwise you can view it only on the 
 			device from which it was created.
           </p>
         </div>
@@ -169,10 +169,10 @@
         </div>
       </div>
     </div>
-    <div class="path text-center">
+    <!-- <div class="path text-center">
       <img class="w-25 flip" src="<?= base_url() ?>assets/image_3.svg" />
-    </div>
-    <!-- end 2 -->
+    </div>  -->
+    <!-- end 2 
     <div class="container laststepimg">
       <div class="row">
         <div class="col-md-6">
@@ -193,7 +193,7 @@
           <img class="w-75" src="<?= base_url() ?>assets/winning-3.svg" />
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- end 3 -->
 
     <!-- <din class="container divmonitize">
@@ -319,7 +319,7 @@
           <div class="container">
             <h1 class="quehdng">Have questions?</h1>
             <p class="quepara">
-              Let's do our best to answer your most frequently asked questions
+              Let's do our best to answer your frequently asked questions
             </p>
             <div class="accordion" id="faq">
               <div class="card">
@@ -331,7 +331,7 @@
                     data-target="#faq1"
                     aria-expanded="true"
                     aria-controls="faq1"
-                    >Do I need to be a registered user to create a poll?</a
+                    >Do I need to be a registered user to create a poll on RisingPoll?</a
                   >
                 </div>
 
@@ -342,11 +342,11 @@
                   data-parent="#faq"
                 >
                   <div class="card-body">
-                    No, you can also create polls without registering,
-					but you will only be able to view your results on
-					the device you created the poll from, nor will you
-					be able to edit or delete that poll. But if you are
-					a registered user then you will get all these facilities.
+                  No, you can also create polls on RisingPoll without registering,
+          but you will only be able to view your results on
+          the device you created the poll from, nor will you
+          be able to edit or delete that poll. But if you are
+          a registered user, you will get all these facilities.
                   </div>
                 </div>
               </div>
@@ -359,7 +359,7 @@
                     data-target="#faq2"
                     aria-expanded="true"
                     aria-controls="faq2"
-                    >How to create poll in WhatsApp?</a
+                    >Is creating polls on rising poll free of cost?</a
                   >
                 </div>
 
@@ -370,10 +370,9 @@
                   data-parent="#faq"
                 >
                   <div class="card-body">
-					If you have its updated version then you can also create 
-					poll directly on whatsapp but you will not get some advanced features
-					 which are provided by Rising Poll.So create your poll with us and share 
-					 it on whatsapp.
+                  Yes, creating polls on RisingPoll is free of cost.
+                   We provide our users with all the services on our platform for free.
+                    We are financed exclusively by advertising.
                   </div>
                 </div>
               </div>
@@ -397,10 +396,9 @@
                   data-parent="#faq"
                 >
                   <div class="card-body">
-                 RisingPoll is an online platform/website that allows users to create polls and
-				Share it on multiple social media platforms to know public opinion. It can be
-				used to play fun quizzes with friends or do some surveys in the office, it is
-				suitable for everyone.
+                  RisingPoll is an online platform/website that allows users
+                   to create polls and share them on multiple social media platforms to know public opinion.
+                   You can use it to play fun quizzes with friends or do some surveys in the office.
                   </div>
                 </div>
               </div>
@@ -413,7 +411,8 @@
                     data-target="#faq4"
                     aria-expanded="true"
                     aria-controls="faq4"
-                    >What is the minimum payment withdrawal limit?</a
+                    >Can I delete/edit a Poll on Rising Poll?
+</a
                   >
                 </div>
 
@@ -424,9 +423,13 @@
                   data-parent="#faq"
                 >
                   <div class="card-body">
-                    The minimum withdrawal limit is INR 5000. once you reach your
-					Minimum Payment Limit This will be credited to your provided 
-					bank details in the next payment cycle.
+                  Yes, As Long as you are a registered user on
+                   RisingPoll you can delete/edit any poll created by you. 
+                  If you have created the poll anonymously, 
+                  you can send us the URL and screenshot of the poll through 
+                  our contact us page. Our team will have proper validation and get the poll deleted
+                   post verification. It may take up to 7 days in the whole procedure.
+
                   </div>
                 </div>
               </div>
@@ -439,7 +442,7 @@
                     data-target="#faq5"
                     aria-expanded="true"
                     aria-controls="faq5"
-                    >Can I delete or edit my poll?</a
+                    >Are the results of Polls created on Rising Poll reliable?</a
                   >
                 </div>
 
@@ -450,14 +453,9 @@
                   data-parent="#faq"
                 >
                   <div class="card-body">
-                    Yes, as long as you are a registered user, 
-					you can edit or delete a poll you have created. 
-					If you are not a registered user and want to 
-					delete your poll then send a screenshot of your 
-					poll ID and a screenshot of the result page to 
-					the given email id on the contact us page. We 
-					will remove your poll. This process can take 
-					up to 1 week to proceed.
+                  Reliability of polls created on rising poll depends on
+                   the parameters chosen at the time of it's creation.
+                    The creator of the poll can choose proper parameters to stop duplicate voting. 
                 </div>
               </div>
             </div>
@@ -469,9 +467,9 @@
         <div class="container">
           <div class="row">
             <div class="col-md-5 contactdiv">
-              <h1 class="contacthdng">Let's Connect <br />with us</h1>
+              <h1 class="contacthdng">Let's Connect <br />with RisingPoll</h1>
               <p class="contactpara">
-                Discuss your query with us, It will help us to build a strong platform.
+                Discuss your query with RisingPoll, It will help us to build a strong platform.
               </p>
             </div>
             <div class="col-md-7 condiv">
@@ -503,7 +501,7 @@
                     type="text"
                     class="form-control"
                     name="subject"
-                    placeholder="Enter Subjet"
+                    placeholder="Enter Subject"
                   />
                 </div>
                 <div class="form-group">
