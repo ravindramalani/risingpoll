@@ -121,5 +121,14 @@ class Db_create_poll extends CI_Model
             return false;
         }
     }
+    public function email_newsletter($email)
+    {
+        $data = array(
+            'email' => $email
+        );
+
+        return $this->db->insert('newsletter_emails', $data);
+    }
+
     
 }

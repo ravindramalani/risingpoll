@@ -147,7 +147,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 text-center disnn hide-m">
-          <img class="w-75" src="<?= base_url() ?>assets/Group_2.svg" />
+          <img class="w-75" src="<?= base_url() ?>assets/Group_2.png" />
         </div>
         <div class="col-md-6">
           <div class="rel d-flex">

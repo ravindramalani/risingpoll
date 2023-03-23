@@ -40,7 +40,8 @@
   
       <!-- Section: Form -->
       <section class="">
-        <form action="">
+      <?php echo validation_errors(); ?>
+        <form method="post" action="<?php echo base_url('manage/email_newsletter'); ?>">
           <!--Grid row-->
           <div class="row d-flex justify-content-center">
             <!--Grid column-->
@@ -55,7 +56,7 @@
             <div class="col-md-5 col-12">
               <!-- Email input -->
               <div class="form-outline emaildiv form-white mb-4">
-                <input type="email" id="form5Example21" placeholder="Email Address" class="form-control" />
+                <input type="email" name="email_newsletter" placeholder="Email Address" class="form-control" />
               </div>
             </div>
             <!--Grid column-->

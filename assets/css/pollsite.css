@@ -809,7 +809,7 @@ font-size: 1.5rem;
   width:45px;
 }
 .emaildiv input{
-  color: var(--white_color)!important;
+  /* color: var(--white_color)!important; */
 }
 .futterdarkcolor{
   background-color: var(--dark_color)!important;

@@ -595,6 +595,28 @@ class Manage extends CI_Controller {
         
     echo json_encode($data);
     }
+    public function email_newsletter()
+    {
+
+        $this->form_validation->set_rules('email_newsletter', 'Email', 'trim|required|valid_email');
+
+        if ($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('contact_msg', validation_errors());
+            $url = $_SERVER['HTTP_REFERER'];
+            redirect($url);
+            return;
+        }
+
+        $email = $this->input->post('email_newsletter');
+
+        if ($this->db_create_poll->email_newsletter($email)) {
+            $this->session->set_flashdata('contact_msg', '<p class="text-success">Thank you for subscribing!</p>');
+        } else {
+            $this->session->set_flashdata('contact_msg', '<p class="text-danger">Sorry, we were unable to subscribe you. Please try again later.</p>');
+        }
+        $url = $_SERVER['HTTP_REFERER'];
+        redirect($url);
+    }
 }
 
 /* End of file mana.php */
