@@ -15,6 +15,12 @@ class Auth extends CI_Controller {
     public function login(){
         $this->load->view('frontent/login');
     }
+    public function forgotpassword(){
+        $this->load->view('forgotpassword');
+    }
+    public function forgotpassword_fail(){
+        $this->load->view('forgotpassword_fail');
+    }
 
     public function signup(){
         $this->load->view('frontent/signup');
@@ -46,41 +52,50 @@ class Auth extends CI_Controller {
             redirect($url);
         }
     }
-    public function register(){
-        $this->form_validation->set_rules('txtname', 'Name', 'required');
-        $this->form_validation->set_rules('txtemail', 'Email', 'is_unique[users.email]|valid_email|required');
-        $this->form_validation->set_rules('txtpassword', 'Password', 'required');
-        $this->form_validation->set_rules('accept', 'T&c ', 'required');
-        if($this->form_validation->run()){ 
-            $data['name'] = $this->input->post('txtname');
-            $data['email'] = $this->input->post('txtemail');
-            $data['password'] = md5($this->input->post('txtpassword'));
-            $data['client_ip'] = $this->get_client_ip();
-            if($this->db_auth->register($data))
-            {
-                $this->session->set_flashdata('error','Registered success');
-                redirect('auth/login');
-            }else{
-                $this->session->set_flashdata('error','Invalid login details.Please try again.');
-                redirect('signin');
+    public function register()
+{
+    $this->form_validation->set_rules('txtname', 'Name', 'required');
+    $this->form_validation->set_rules('txtemail', 'Email', 'is_unique[users.email]|valid_email|required');
+    $this->form_validation->set_rules('txtpassword', 'Password', 'required');
+    $this->form_validation->set_rules('accept', 'T&c', 'required');
+
+    if ($this->form_validation->run()) {
+        $data['name'] = $this->input->post('txtname');
+        $data['email'] = $this->input->post('txtemail');
+        $data['password'] = md5($this->input->post('txtpassword'));
+        $data['client_ip'] = $this->get_client_ip();
+
+        if ($this->db_auth->register($data)) {
+            $query = $this->db_auth->getuser();
+
+            foreach ($query->result() as $row) {
+                if ($row->email == $data['email']) {
+                    echo 'Sorry but this email is already in use. Please go back and use a different email.';
+                } else {
+                    $this->session->set_flashdata('error', 'Registered success');
+                    redirect('auth/login');
+                }
             }
-        }else{
-            if(form_error('txtname')){
-                $this->session->set_flashdata('name','<div class="text-danger">'.form_error('txtname').'</div>');
-            }
-            if(form_error('txtemail')){
-                $this->session->set_flashdata('email','<div class="text-danger">'.form_error('txtemail').'</div>');
-            }
-            if(form_error('txtpassword')){
-                $this->session->set_flashdata('password','<div class="text-danger">'.form_error('txtpassword').'</div>');
-            }
-            if(form_error('accept')){
-                $this->session->set_flashdata('accept','<div class="text-danger">'.form_error('accept').'</div>');
-            }
-            $url = $_SERVER['HTTP_REFERER'];
-            redirect($url);
         }
+    } else {
+        if (form_error('txtname')) {
+            $this->session->set_flashdata('txtname', '<div class="text-danger">' . form_error('txtname') . '</div>');
+        }
+        if (form_error('txtemail')) {
+            $this->session->set_flashdata('txtemail', '<div class="text-danger">' . form_error('txtemail') . '</div>');
+        }
+        if (form_error('txtpassword')) {
+            $this->session->set_flashdata('txtpassword', '<div class="text-danger">' . form_error('txtpassword') . '</div>');
+        }
+        if (form_error('accept')) {
+            $this->session->set_flashdata('accept', '<div class="text-danger">' . form_error('accept') . '</div>');
+        }
+        $url = $_SERVER['HTTP_REFERER'];
+        redirect($url);
     }
+}
+
+        
     public function get_client_ip() {
         $ipaddress = '';
         if (getenv('HTTP_CLIENT_IP'))

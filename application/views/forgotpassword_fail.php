@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Log in to your account - RisingPoll.com</title>
+  <title>Reset password</title>
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:site_name" content="RisingPoll" />
   <meta property="og:title" content="Log in to your account - RisingPoll.com" />
@@ -41,6 +41,7 @@
 </head>
 
 <body class="hold-transition login-page ">
+
   <div style="height:100% ;width:100%">
     <div class='cover'>
       <div class="left_cont dn ">
@@ -48,7 +49,7 @@
           <div class="left-box-content">
             <p id="article_content"></p>
           </div>
-
+          
           <div class="arrow-container animated fadeInDown">
             <div class="arrow-2  ">
 
@@ -59,38 +60,37 @@
         </div>
       </div>
       <div class='rightSection'>
+      
         <div class="right_cont">
           <div class="right-box">
             <div class="form-dir">
-              <form action="<?php echo base_url('auth/check_login');?>" method="post" accept-charset="utf-8">
+              <form action="<?php echo base_url('pages/forgotpassword_action');?>" method="post" accept-charset="utf-8">
+              <div class="container">
+		              <?php
+                    $msg = $this->session->flashdata('Wrong email, enter again');
+	                if($msg!=""){
+	              	echo "<div class='alert alert-danger'>$msg</div>";
+	                }
+
+                 ?>
                 <div class="form">
                   <div class="f1">
-                  <p class="h4">Log in to your account</p>
-                  <p class="h6">Or <a href="<?= base_url('signup') ?>">create an account</a></p>
+                  <p class="h4">Enter your email</p>
+                  
                   </div>
-                  <?php if($this->session->flashdata('error')) : ?>
-                        <?php echo $this->session->flashdata('error'); ?>
-                    <?php endif; ?>
+                  
                   <div class="form-group has-feedback">
                     <label>Email</label>
-                    <input type="text" name="txtemail" class="form-control mb-1" placeholder="Email">
+                    <input type="email" name="txtemail" class="form-control mb-1" placeholder="Email">
                     <?php if($this->session->flashdata('email')) : ?>
                         <?php echo $this->session->flashdata('email'); ?>
                     <?php endif; ?>
                   </div>
-                  <div class="form-group has-feedback">
-                    <label>Password</label>
-                    <input type="password" name="txtpassword" class="form-control mb-1" placeholder="Password">
-                    <?php if($this->session->flashdata('password')) : ?>
-                        <?php echo $this->session->flashdata('password'); ?>
-                    <?php endif; ?>
-                  </div>
+                  
                   <div class="">
-                    <button type="submit" class="btn mb-1 mt-1 btn-block btn-flat">Sign In</button>
+                    <button type="submit" class="btn mb-1 mt-1 btn-block btn-flat">Send otp</button>
                   </div>
-                  <div class="mt-1 f4">
-                    <p class="mt-2" style="text-align: center;"><a href="<?= base_url('auth/forgotpassword') ?>" class="link-dark">Forgot Your Password?</a></p>
-                  </div>
+                  
                   <input hidden type="text" id="scroll_value" value="1">
                   <div>
               </form>
@@ -136,3 +136,5 @@
 </body>
 
 </html>
+
+

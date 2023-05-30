@@ -108,7 +108,7 @@ $title = $poll->title;
                         <a class="nav-link navi" href="<?= base_url('create') ?>">Create Poll</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link navi" href="<?= base_url('blog'); ?>">Blog</a>
+                        <a class="nav-link navi" href="<?= base_url('pages/learnhow'); ?>">Blog</a>
                     </li>  
                     <?php if(!$this->session->userdata('fname')){?>
                     <li class="nav-item  hide-d">

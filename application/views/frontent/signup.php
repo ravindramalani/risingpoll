@@ -116,16 +116,18 @@
 
                             <div class="input-group inputshdw mb-4">
                                 <input type="text" name="txtname" placeholder="Full Name" class="form-control input-s1">
+                                <?php echo form_error('txtname'); ?>
                             </div>
-                            <?php if($this->session->flashdata('name')) : ?>
-                            <?php echo $this->session->flashdata('name'); ?>
+                            <?php if($this->session->flashdata('txtname')) : ?>
+                            <?php echo $this->session->flashdata('txtname'); ?>
                             <?php endif; ?>
                             <div class="input-group inputshdw mb-4">
                                 <input type="email" name="txtemail" placeholder="Email Address"
                                     class="form-control  input-s1">
+                                    <?php echo form_error('txtemail'); ?>
                                 </div>
-                                <?php if($this->session->flashdata('email')) : ?>
-                                <?php echo $this->session->flashdata('email'); ?>
+                                <?php if($this->session->flashdata('txtemail')) : ?>
+                                <?php echo $this->session->flashdata('txtemail'); ?>
                                 <?php endif; ?>
                             <!-- <div class="input-group mb-4">
                                 <div class="row">
@@ -148,7 +150,10 @@
                             <div class="px-2">
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" name="accept" class="custom-control-input" id="customSwitches">
-                                    <label class="custom-control-label" for="customSwitches">I agree to the privacy policy and terms of service.</label>
+                                    <?php echo form_error('accept'); ?>
+                                    <label class="custom-control-label" for="customSwitches">I agree to the <a href="<?= base_url('pages/privacypolicy') ?>"
+                                        class="ml-1" >Privacy policy</a> and <a href="<?= base_url('pages/terms') ?>"
+                                        class="ml-1" >Terms of service</a></label>
                                     <?php if($this->session->flashdata('accept')) : ?>
                                     <?php echo $this->session->flashdata('accept'); ?>
                                     <?php endif; ?>

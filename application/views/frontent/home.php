@@ -5,6 +5,13 @@
       font-weight: 900;
       float: right;
     }
+    .w-75 {
+      max-width: 100%;
+      height: auto;
+    }
+   
+
+
     .arrow-right{
       border-top: 39px solid transparent;
       border-bottom: 39px solid transparent;
@@ -62,9 +69,9 @@
                 </a>
             </div>
             <div class="col-md-5">
-              <button type="button" class="btn btn-lg bgwht whtbtn">
+            <a href="<?= base_url('pages/learnhow') ?>" class="btn btn-lg bgwht whtbtn">
                 Learn how
-              </button>
+                </a>
             </div>
           </div>
         </div>
@@ -146,9 +153,10 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-md-6 text-center disnn hide-m">
-          <img class="w-75" src="<?= base_url() ?>assets/Group_2.png" />
+      <div class="col-md-6 text-center disnn hide-m">
+          <img class="w-75" src="<?= base_url() ?>assets/Group_2.png"  />
         </div>
+
         <div class="col-md-6">
           <div class="rel d-flex">
             <div class="arrow-flip my-5"></div>
@@ -165,7 +173,7 @@
           </p>
         </div>
         <div class="col-md-6 text-center m-img">
-          <img class="w-75" src="<?= base_url() ?>assets/Group_2.svg" />
+          <img class="w-75" src="<?= base_url() ?>assets/Group_2.svg" width="600" height="200" />
         </div>
       </div>
     </div>

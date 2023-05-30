@@ -129,22 +129,41 @@
   </footer>
   <!-- Footer -->
 <script>
-var i=2;
-function create_element(){
-    $('#app_thing').clone().attr('id','opt'+i).appendTo('.append_option');
-    $('#opt'+i+' input').attr({'placeholder':'Option '+(i+1)+''});
-    $('#opt'+i+' .ans-option button:nth-child(1)').attr('onclick','remove_element("opt'+i+'")');
-    i++;
+var i = 2;
+
+function create_element() {
+  var $newOption = $('#app_thing').clone().attr('id', 'opt' + i);
+  $newOption.find('input').attr('placeholder', 'Option ' + (i + 1)).val('');
+  $newOption.find('.ans-option button:nth-child(1)').attr('onclick', 'remove_element("opt' + i + '")');
+  $newOption.appendTo('.append_option');
+  i++;
 }
-function remove_element(id){
-    $('#'+id+'').remove();
-}
-$('#upload_head').click(function(){
+
+function remove_element(id) {
+  $('#' + id).remove();
+  
+  // Reassign IDs to maintain sequence
+  var elements = $('.form-control.shadow-none');
+  elements.each(function(index) {
+    var currentIndex = index + 1;
+    var newId = 'option_' + currentIndex;
+    if ($(this).attr('id') !== newId) {
+      $(this).attr('id', newId);
+      $(this).attr('name', newId); // Optionally update the name attribute as well
+    }
+  });
+  
+  // Reset the click event for upload buttons
+  $('#upload_head').off('click').click(function() {
     document.getElementById("head_img").click();
-})
-$('#opt_upload_btn').click(function(){
+  });
+
+  $('#opt_upload_btn').off('click').click(function() {
     document.getElementById("opt_file").click();
-})
+  });
+}
+
+
 </script>
 <script>
         $('#selector').delay(400).fadeOut('slow');
