@@ -10,10 +10,10 @@ const [showText,setShowText] = useState(true);
   return (
     <div>
      <h1>{count}</h1>
-     <button onClick ={() =>{
+     <button onClick={() =>{
          setCount(count+1);
          setShowText(!showText);
-     }} 
+     }}
      > click here </button>
      {showText && <p>This denotes a even number</p>}
     </div>
